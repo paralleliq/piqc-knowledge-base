@@ -101,14 +101,14 @@ ML deployments today often rely on fragmented knowledge scattered across contain
 
 </div>
 
-CSS Animation Hack (GitHub-safe trick using keyframes inside HTML)
+<!-- CSS Animation Hack (GitHub-safe trick using keyframes inside HTML)
 <style>
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.06); }
   100% { transform: scale(1); }
 }
-</style>
+</style> -->
 
 ---
 
