@@ -59,7 +59,7 @@ ML deployments today often rely on fragmented knowledge scattered across contain
 <div align="center">
 
   <!-- Animated Logo -->
-  <img src="company-logo.png" alt="ParalleliQ Logo" width="400" style="animation: pulse 2s infinite;"/>
+  <img src="images/company-logo.png" alt="ParalleliQ Logo" width="400" style="animation: pulse 2s infinite;"/>
 
   <br/><br/>
 
