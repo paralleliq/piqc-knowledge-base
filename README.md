@@ -43,19 +43,19 @@ This repository is intentionally **model-type agnostic** and applies to:
 
 Use the sections below to explore the knowledge base.
 
-### 🔧 AI Infrastructure Best Practices
+### AI Infrastructure Best Practices
 Guidelines for designing, deploying, and operating efficient, reliable, and cost-optimized AI/LLM inference infrastructure.  
 📂 `ai-infrastructure-best-practices/`
 
-### 🧱 AI Infrastructure Audit Checklist (42-Point Review)
+### AI Infrastructure Audit Checklist (42-Point Review)
 A structured, practitioner-oriented framework for evaluating the **readiness, performance, reliability, and cost efficiency** of AI infrastructure.  
 📂 `ai-infrastructure-audit-checklist/`
 
-### 🔒 AI Compliance & Governance Checklist
+### AI Compliance & Governance Checklist
 High-level controls and considerations for ensuring **responsible, compliant, and secure** AI/LLM deployments.  
 📂 `ai-compliance-checklist/`
 
-### 🧪 Model Deployment Quality Checklist
+### Model Deployment Quality Checklist
 Conceptual diagnostic categories used to assess the **quality of deployed AI/LLM model services**, informing the future direction of PIQC Advisor.  
 📂 `model-deployment-quality-checklist/`
 
