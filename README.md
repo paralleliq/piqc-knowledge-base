@@ -48,6 +48,15 @@ Open an issue or pull request to get started and share your ideas.
 
 ---
 
+## Governance & Ownership
+
+This checklist is maintained by **ParalleliQ** as part of its open knowledge base around GenAI infrastructure and deployment standards.
+
+The document is intentionally high-level to:
+- Encourage community discussion
+- Minimize maintenance burden
+- Avoid exposing proprietary implementation logic
+
 ## ⭐ Why This Matters
 
 ML deployments today often rely on fragmented knowledge scattered across container configs, CLI arguments, dashboards, and tribal expertise. A shared, community-driven checklist helps create consistency and sets the foundation for better tooling and standards  for example, a future *ModelSpec* that describes model behavior and requirements in a structured, declarative way.
