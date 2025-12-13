@@ -1,4 +1,4 @@
-# PIQC AI Infrastructure Audit Checklist (42-Point Readiness & Efficiency Review)
+# 🏗 PIQC AI Infrastructure Audit Checklist (42-Point Readiness & Efficiency Review)
 
 # AI Infrastructure 42-Point Audit Checklist
 
