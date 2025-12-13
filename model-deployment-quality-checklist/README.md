@@ -1,3 +1,6 @@
+# PIQC Model Deployment Quality Checklist  
+(Proposed Advisor Diagnostic Categories)
+
 A structured checklist to evaluate model deployment correctness, performance,
 reliability, scalability, and cost efficiency.
 
