@@ -1,52 +1,116 @@
-# PIQC Model Deployment Quality Checklist  
-(Proposed Advisor Diagnostic Categories)
-
-A high-level checklist outlining diagnostic categories used to evaluate the quality of deployed AI/LLM model services.
-
-These categories inform the **future direction** of PIQC Advisor.
+A structured checklist to evaluate model deployment correctness, performance,
+reliability, scalability, and cost efficiency.
 
 ---
 
-## 1. GPU Efficiency
-- Under-utilized GPUs
-- Inefficient batch sizes
-- Suboptimal precision
-- Poor sharding or parallelism
+## 1. Model Configuration
 
-## 2. Memory Configuration
-- Unnecessary GPU count
-- OOM-risk configurations
-- Wasteful memory headroom
-
-## 3. Autoscaling Behavior
-- Incorrect metrics
-- Replica imbalance
-- Slow scaling responses
-
-## 4. Engine & Runtime Configuration
-- Outdated engine versions
-- Disabled optimizations
-- Misaligned scheduling policies
-
-## 5. Routing & Endpoint Health
-- Unhealthy rollouts
-- Load imbalance
-- Lack of canarying
-
-## 6. Reliability & Deployment Hygiene
-- Missing probes
-- Resource mismatches
-- Configuration drift
-
-## 7. Cross-Model & Pipeline-Level Issues
-- Inter-model bottlenecks
-- Dependency misalignment
-- Duplicate deployments
-- Version inconsistency
+- [ ] Model identifier (id/family/task/framework) is correct
+- [ ] Precision (fp16/bf16/int8) is explicitly configured
+- [ ] Max sequence length is appropriate for expected inputs
+- [ ] Max generation length is defined
+- [ ] Tokenizer configuration is correct and consistent
+- [ ] Model artifacts (weights, tokenizer, config) are versioned
+- [ ] Model URI paths resolve correctly (S3/GCS/local)
 
 ---
 
-These checks are **conceptual only**.  
-Underlying detection algorithms remain proprietary to PIQC Advisor.
+## 2. Runtime & Hardware Alignment
 
-Feedback and additional categories are welcome.
+- [ ] GPU type matches model requirements
+- [ ] GPU memory is adequate for max batch × max sequence length
+- [ ] Tensor parallel and pipeline parallel settings are valid
+- [ ] GPU count matches configuration in orchestration layer
+- [ ] CPU and memory allocations support preprocessing/postprocessing
+- [ ] Environment variables required by the model runtime are set
+
+---
+
+## 3. Serving Configuration
+
+- [ ] Serving protocol (HTTP/GRPC) is explicitly defined
+- [ ] Port configuration is correct
+- [ ] Max concurrency value is set and model-appropriate
+- [ ] Timeout settings reflect worst-case prompt/generation sizes
+- [ ] Readiness probe path returns 200 and verifies model health
+- [ ] Liveness probe detects hangs or dead model workers
+- [ ] Default batch size and max batch size are set
+
+---
+
+## 4. Scaling & Performance
+
+- [ ] MinReplicas and MaxReplicas are defined
+- [ ] Autoscaling strategy (reactive/predictive/manual) is set
+- [ ] Scaling metrics reflect ML workloads (not CPU only)
+- [ ] Target latency P95/P99 values are defined
+- [ ] Warm pool size supports cold-start-sensitive models
+- [ ] GPU utilization is monitored for under/over-utilization
+- [ ] Batch scheduling behavior is validated (LLM-specific)
+
+---
+
+## 5. Observability & Logging
+
+- [ ] Metrics endpoint is enabled
+- [ ] Metrics provider (Prometheus/OTel) is configured
+- [ ] Logs include request ID / trace ID
+- [ ] Logging level is set appropriately (INFO/ERROR)
+- [ ] Tracing is enabled if required
+- [ ] Latency, token throughput, and GPU metrics are exported
+- [ ] Error codes and failure modes are captured and labeled
+
+---
+
+## 6. Preprocessing & Postprocessing
+
+- [ ] Preprocessing steps are defined and deterministic
+- [ ] Tokenization settings match model configuration
+- [ ] Postprocessing steps (reranking, formatting, filtering) are defined
+- [ ] Each step is tested independently and in sequence
+- [ ] Optional steps correctly handle `enabled=false`
+
+---
+
+## 7. Dependency Graph (Model-to-Model Interactions)
+
+- [ ] Upstream dependencies are defined (guardrails, rerankers, retrievers)
+- [ ] Each dependency includes input/output type contracts
+- [ ] Latency budgets are defined for dependency calls
+- [ ] Optional dependencies are correctly marked as non-required
+- [ ] specRef paths resolve correctly
+- [ ] Circular dependencies do not exist
+- [ ] Data formats between nodes are validated
+
+---
+
+## 8. Safety, Compliance & Governance
+
+- [ ] PII handling policy (allowed/disallowed) is defined
+- [ ] Retention policy for logs and artifacts is set
+- [ ] Governance owner is assigned
+- [ ] Change approval workflow is documented
+- [ ] Safety filters or guardrails are connected and active
+- [ ] Input/output filtering meets org policy
+
+---
+
+## 9. Cost Controls
+
+- [ ] Target cost per request or per 1k tokens is defined
+- [ ] Instance type and GPU class match cost constraints
+- [ ] Spot instance usage is explicitly allowed/disabled
+- [ ] Scaling rules prevent runaway costs
+- [ ] Cross-model cost attribution is monitored
+- [ ] Batch and throughput settings are optimized for cost/latency tradeoff
+
+---
+
+## 10. Release Engineering & Versioning
+
+- [ ] Model version and runtime version are pinned
+- [ ] Image tag is immutable (no `latest`)
+- [ ] Rollout strategy is defined (canary/blue-green/shadow)
+- [ ] Compatibility with previous versions is verified
+- [ ] Rollback procedure is tested
+- [ ] ModelSchema/ModelSpec validity check passes
