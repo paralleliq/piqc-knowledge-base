@@ -26,7 +26,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ---
 
-# Phase 0 —> Model & Intent Readiness (Before Any Cluster Work)
+# Phase 0: Model & Intent Readiness (Before Any Cluster Work)
 
 ### 🎯 Goal: Validate artifacts + deployment intent before touching Kubernetes.
 
@@ -58,7 +58,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ---
 
-# Phase 1 —> Runtime & Packaging (Day-0)
+# Phase 1: Runtime & Packaging (Day-0)
 
 ### 🎯 Goal: Build a runtime that efficiently serves the model.
 
@@ -98,7 +98,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ---
 
-# Phase 2 —> Kubernetes & Infrastructure Readiness (Day-1)
+# Phase 2: Kubernetes & Infrastructure Readiness (Day-1)
 
 ### 🎯 Goal: Ensure GPU nodes + infra can run LLM inference reliably.
 
@@ -140,7 +140,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ---
 
-# Phase 3 —> Observability & Autoscaling (Day-1 → Day-2)
+# Phase 3: Observability & Autoscaling (Day-1 → Day-2)
 
 ### 🎯 Goal: Understand real runtime behavior before scaling or optimizing.
 
@@ -174,7 +174,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ---
 
-# Phase 4 —> Production Readiness & Operations (Day-2)
+# Phase 4: Production Readiness & Operations (Day-2)
 
 ### 🎯 Goal: Ensure the system is safe to run, debug, scale, and release.
 
