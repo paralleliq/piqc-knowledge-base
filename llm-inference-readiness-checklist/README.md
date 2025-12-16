@@ -12,7 +12,6 @@ This guide aligns responsibilities across ML Engineering, MLOps, SRE, Platform/I
   <img src="https://img.shields.io/badge/Stage-Day0→Day2-lightgrey.svg?style=flat-square">
 </p>
 
----
 
 ## 📘 Overview
 
@@ -31,8 +30,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Validate artifacts + deployment intent before touching Kubernetes.
 
----
-
 ## 0.1 Model Artifact Readiness  
 **Owner: ML Engineer**
 
@@ -41,7 +38,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Model license reviewed and approved  
 - [ ] Parameter count documented (7B / 13B / 70B / etc.)  
 
----
 
 ## 0.2 Inference Constraints Defined  
 **Owners: ML Engineer + Product**
@@ -52,7 +48,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Latency SLO (p95 / p99)  
 - [ ] Throughput expectations (QPS or tokens/sec)  
 
----
 
 ## 0.3 Precision & Optimization Intent  
 **Owner: ML Engineer**
@@ -67,16 +62,12 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Build a runtime that efficiently serves the model.
 
----
-
 ## 1.1 Runtime Selection  
 **Owner: ML Platform / MLOps**
 
 - [ ] Runtime chosen (vLLM)  
 - [ ] Runtime version pinned  
 - [ ] Serving interface chosen (OpenAI-compatible or custom)  
-
----
 
 ## 1.2 vLLM Runtime Configuration  
 **Owner: MLOps**
@@ -88,7 +79,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Tensor parallel size chosen intentionally  
 - [ ] Continuous batching enabled  
 
----
 
 ## 1.3 Packaging Strategy  
 **Owners: Platform / MLOps**
@@ -97,7 +87,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Cold-start behavior documented  
 - [ ] Secrets handled securely  
 
----
 
 ## 1.4 Container Image  
 **Owner: MLOps**
@@ -113,7 +102,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Ensure GPU nodes + infra can run LLM inference reliably.
 
----
 
 ## 2.1 GPU Infrastructure  
 **Owners: Infra / Platform**
@@ -123,7 +111,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] GPU nodes correctly labeled/tainted  
 - [ ] GPU type + memory documented  
 
----
 
 ## 2.2 Storage  
 **Owner: Platform**
@@ -132,7 +119,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] PVC / NFS / Object Store access tested  
 - [ ] Pod-level access permissions validated  
 
----
 
 ## 2.3 Kubernetes Manifests  
 **Owner: MLOps**
@@ -143,7 +129,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Readiness probe waits for full model load  
 - [ ] Restart behavior validated  
 
----
 
 ## 2.4 Networking & Access  
 **Owners: Platform + Security**
@@ -159,7 +144,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Understand real runtime behavior before scaling or optimizing.
 
----
 
 ## 3.1 Metrics & Logs  
 **Owner: SRE / Platform**
@@ -170,7 +154,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Error counters / timeout metrics  
 - [ ] GPU metrics (DCGM)  
 
----
 
 ## 3.2 Autoscaling Configuration  
 **Owner: SRE**
@@ -180,7 +163,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Min/max replicas justified  
 - [ ] Cooldowns tuned  
 
----
 
 ## 3.3 Autoscaling Sanity Check  
 **Owners: SRE + MLOps**
@@ -196,7 +178,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Ensure the system is safe to run, debug, scale, and release.
 
----
 
 ## 4.1 Release Strategy  
 **Owners: SRE + MLOps**
@@ -205,7 +186,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Canary prompts prepared  
 - [ ] Rollback path tested end-to-end  
 
----
 
 ## 4.2 Failure & Cost Awareness  
 **Owners: SRE + Platform + Finance**
@@ -215,7 +195,6 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Cost per replica estimated  
 - [ ] Idle GPU detection enabled  
 
----
 
 ## 4.3 Drift & Optimization  
 **Owners: MLOps + SRE**
@@ -225,4 +204,3 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Batching effective under real traffic  
 - [ ] Autoscaling decisions reviewed  
 
----
