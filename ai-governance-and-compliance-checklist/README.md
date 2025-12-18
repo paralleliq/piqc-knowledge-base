@@ -1,6 +1,6 @@
 # PIQC AI Compliance & Governance Checklist
 
-The AI Compliance Readiness Checklist is a strong and pragmatic foundation for establishing responsible, traceable, and auditable AI operations. It already addresses key layers of compliance—governance, data privacy, transparency, fairness, security, and regulatory alignment—and introduces domain-specific considerations for healthcare, finance, and other industries.
+The AI Compliance Readiness Checklist is a strong and pragmatic foundation for establishing responsible, traceable, and auditable AI operations. It already addresses key layers of compliance governance, data privacy, transparency, fairness, security, and regulatory alignment and introduces domain-specific considerations for healthcare, finance, and other industries.
 
 To strengthen its long-term value and readiness for audits, the checklist can be enhanced to support continuous monitoring, automation, and maturity scoring. These improvements will convert it from a static compliance document into an operational framework that supports ongoing audit readiness and governance assurance.
 
