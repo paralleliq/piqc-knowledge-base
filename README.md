@@ -1,7 +1,9 @@
 # PIQC Knowledge Base
 ### GenAI Model Deployment Readiness, Infrastructure Best Practices & Quality Frameworks
 
-A curated, community-driven collection of best practices, deployment checklists, governance guidelines, and diagnostic frameworks for **modern AI / LLM infrastructure**.
+A curated, community-driven knowledge base covering **production readiness, deployment quality, and operational best practices** for **modern AI / LLM systems**.
+
+This repository is maintained by **ParalleliQ** and serves as a public reference for how real-world AI systems should be deployed, scaled, observed, and governed  **from Day-0 experiments to Day-2 production operations**.
 
 <p align="left">
   <img src="https://img.shields.io/badge/Category-AI%20Infrastructure-blue.svg?style=flat-square">
@@ -17,9 +19,24 @@ A curated, community-driven collection of best practices, deployment checklists,
 
 Deploying Generative AI systems in production is fundamentally different from deploying traditional microservices.
 
-GenAI workloads introduce **batching behavior, GPU memory spikes, warmup cycles, model-specific latency curves, autoscaling complexity, and cost volatility** that require a dedicated operational discipline.
+GenAI workloads introduce:
+- GPU memory pressure and fragmentation  
+- Non-linear batching behavior  
+- Long warmup cycles  
+- Tail-latency sensitivity  
+- Complex autoscaling signals  
+- High cost volatility  
 
-The **PIQC Knowledge Base** exists to capture and organize this discipline.
+These characteristics demand specialized deployment discipline.
+
+The **PIQC Knowledge Base** exists to capture and organize that discipline into **clear, reusable, and community-friendly checklists and frameworks**.
+
+All content is:
+- **High-level and conceptual**
+- **Framework-agnostic**
+- **Infrastructure-neutral**
+- **Safe for public discussion**
+- **Free of proprietary algorithms**
 
 It provides structured, high-level guidance to help teams ensure their AI systems are:
 
@@ -39,26 +56,55 @@ This repository is intentionally **model-type agnostic** and applies to:
 - **Audio, vision, and generative pipelines**
 
 ---
+## 📄 Core Deployment Readiness Checklist
 
-## 📚 Navigation
+The repository includes a **top-level, model-agnostic readiness checklist** designed for early-stage and pre-production validation.
 
-Use the sections below to explore the knowledge base.
+📄 **AI Model Deployment Checklist (v0.1)**  
+📂 `CHECKLIST.md`
 
-### AI Infrastructure Best Practices
-Guidelines for designing, deploying, and operating efficient, reliable, and cost-optimized AI/LLM inference infrastructure.  
-📂 `ai-infrastructure-best-practices/`
+This checklist covers:
+- Model identity and constraints  
+- Compute & GPU planning  
+- Performance objectives  
+- Routing and release strategy  
+- Autoscaling requirements  
+- Observability and reliability  
+- Security, compliance, and governance  
+- Operational ownership and metadata  
 
-### AI Infrastructure Audit Checklist (42-Point Review)
-A structured, practitioner-oriented framework for evaluating the **readiness, performance, reliability, and cost efficiency** of AI infrastructure.  
-📂 `ai-infrastructure-audit-checklist/`
+---
 
-### AI Compliance & Governance Checklist
-High-level controls and considerations for ensuring **responsible, compliant, and secure** AI/LLM deployments.  
-📂 `ai-compliance-checklist/`
+## 📚 Knowledge Base Navigation
+
+Use the sections below to explore the full PIQC knowledge base.
+
+### AI Infrastructure Best Practices & Playbooks
+Production-oriented guidance for designing, deploying, and operating **efficient, reliable, and cost-optimized AI inference infrastructure**, with a focus on runtime behavior and system-level tradeoffs.  
+📂 `ai-infrastructure-best-practices-and-playbooks/`
+
+### AI Infrastructure Audit & Readiness Checklist (42-Point Review)
+A structured, vendor-neutral framework for evaluating **compute health, networking, storage, reliability, scalability, and governance** across AI/ML infrastructure environments.  
+📂 `ai-infrastructure-audit-and-readiness-checklist/`
+
+### AI Governance & Compliance Checklist
+A pragmatic compliance and governance framework covering **AI accountability, data privacy, transparency, fairness, security, and regulatory readiness**, including domain-specific extensions.  
+📂 `ai-governance-and-compliance-checklist/`
 
 ### Model Deployment Quality Checklist
-Conceptual diagnostic categories used to assess the **quality of deployed AI/LLM model services**, informing the future direction of PIQC Advisor.  
-📂 `model-deployment-quality-checklist/`
+Conceptual diagnostic categories used to evaluate the **correctness, performance, scalability, and cost efficiency** of deployed AI/LLM model services.  
+This checklist informs the future direction of **PIQC Advisor** diagnostics.  
+📂 `ai-model-deployment-quality-checklist/`
+
+
+### LLM Inference Production Readiness (Kubernetes + vLLM)
+A **Day-0 → Day-2, cross-functional readiness framework** for deploying LLMs using **vLLM on Kubernetes**, aligned across ML Engineering, MLOps, SRE, Platform, and Security teams.  
+📂 `llm-inference-production-readiness-checklist/`
+
+
+### vLLM Runtime Metrics & Observability Guide
+A public, vendor-neutral catalog of **static and dynamic runtime signals** required to analyze GPU efficiency, batching behavior, latency, autoscaling correctness, and runtime drift in vLLM-based inference systems.  
+📂 `vllm-runtime-metrics-and-observability-guide/`
 
 ---
 

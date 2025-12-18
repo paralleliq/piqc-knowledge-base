@@ -2,6 +2,19 @@
 
 *A community-driven checklist for preparing GenAI models including LLMs, diffusion models, embedding pipelines, and multimodal systems for production deployment.*
 
+## 📘 Table of Contents
+1. [🔥 Model Identity](#-1-model-identity)
+2. [⚙️ Compute & GPU Planning](#%EF%B8%8F-2-compute--gpu-planning)
+3. [📊 Performance Objectives](#-3-performance-objectives)
+4. [🔀 Routing & Release Strategy](#-4-routing--release-strategy)
+5. [📈 Autoscaling Requirements](#-5-autoscaling-requirements)
+6. [🕵️ Observability](#%EF%B8%8F-6-observability)
+7. [🛡️ Reliability](#%EF%B8%8F-7-reliability)
+8. [🔒 Security & Compliance](#-8-security--compliance)
+9. [📁 Operational Metadata](#-9-operational-metadata)
+
+---
+
 ## 🔥 **1. Model Identity**
 - [ ] Model name, version, and revision  
 - [ ] Fine-tune lineage or variant  
