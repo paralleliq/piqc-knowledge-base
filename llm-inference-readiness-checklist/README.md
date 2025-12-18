@@ -30,7 +30,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Validate artifacts + deployment intent before touching Kubernetes.
 
-## 0.1 Model Artifact Readiness  
+## Model Artifact Readiness  
 **Owner: ML Engineer**
 
 - [ ] Model weights exported in a deployable HF-style format  
@@ -39,7 +39,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Parameter count documented (7B / 13B / 70B / etc.)  
 
 
-## 0.2 Inference Constraints Defined  
+## Inference Constraints Defined  
 **Owners: ML Engineer + Product**
 
 - [ ] Max context length defined  
@@ -49,7 +49,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Throughput expectations (QPS or tokens/sec)  
 
 
-## 0.3 Precision & Optimization Intent  
+## Precision & Optimization Intent  
 **Owner: ML Engineer**
 
 - [ ] Precision selected (fp32 / fp16 / bf16)  
@@ -62,14 +62,14 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 
 ### 🎯 Goal: Build a runtime that efficiently serves the model.
 
-## 1.1 Runtime Selection  
+## Runtime Selection  
 **Owner: ML Platform / MLOps**
 
 - [ ] Runtime chosen (vLLM)  
 - [ ] Runtime version pinned  
 - [ ] Serving interface chosen (OpenAI-compatible or custom)  
 
-## 1.2 vLLM Runtime Configuration  
+## vLLM Runtime Configuration  
 **Owner: MLOps**
 
 - [ ] Model path or registry reference defined  
@@ -80,7 +80,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Continuous batching enabled  
 
 
-## 1.3 Packaging Strategy  
+## Packaging Strategy  
 **Owners: Platform / MLOps**
 
 - [ ] Model loading strategy chosen (runtime pull / baked image / storage mount)  
@@ -88,7 +88,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Secrets handled securely  
 
 
-## 1.4 Container Image  
+## Container Image  
 **Owner: MLOps**
 
 - [ ] CUDA-compatible base image  
@@ -103,7 +103,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 ### 🎯 Goal: Ensure GPU nodes + infra can run LLM inference reliably.
 
 
-## 2.1 GPU Infrastructure  
+## GPU Infrastructure  
 **Owners: Infra / Platform**
 
 - [ ] NVIDIA drivers installed  
@@ -112,7 +112,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] GPU type + memory documented  
 
 
-## 2.2 Storage  
+## Storage  
 **Owner: Platform**
 
 - [ ] Model storage bandwidth benchmarked  
@@ -120,7 +120,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Pod-level access permissions validated  
 
 
-## 2.3 Kubernetes Manifests  
+## Kubernetes Manifests  
 **Owner: MLOps**
 
 - [ ] Deployment / StatefulSet configured  
@@ -130,7 +130,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Restart behavior validated  
 
 
-## 2.4 Networking & Access  
+## Networking & Access  
 **Owners: Platform + Security**
 
 - [ ] Service (ClusterIP / LoadBalancer) defined  
@@ -145,7 +145,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 ### 🎯 Goal: Understand real runtime behavior before scaling or optimizing.
 
 
-## 3.1 Metrics & Logs  
+## Metrics & Logs  
 **Owner: SRE / Platform**
 
 - [ ] `/metrics` exposed  
@@ -155,7 +155,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] GPU metrics (DCGM)  
 
 
-## 3.2 Autoscaling Configuration  
+## Autoscaling Configuration  
 **Owner: SRE**
 
 - [ ] HPA uses custom **ML metrics**  
@@ -164,7 +164,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Cooldowns tuned  
 
 
-## 3.3 Autoscaling Sanity Check  
+## Autoscaling Sanity Check  
 **Owners: SRE + MLOps**
 
 - [ ] Scaling improves throughput  
@@ -179,7 +179,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 ### 🎯 Goal: Ensure the system is safe to run, debug, scale, and release.
 
 
-## 4.1 Release Strategy  
+## Release Strategy  
 **Owners: SRE + MLOps**
 
 - [ ] Rolling / Blue-Green strategy defined  
@@ -187,7 +187,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Rollback path tested end-to-end  
 
 
-## 4.2 Failure & Cost Awareness  
+## Failure & Cost Awareness  
 **Owners: SRE + Platform + Finance**
 
 - [ ] OOM behavior understood  
@@ -196,7 +196,7 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Idle GPU detection enabled  
 
 
-## 4.3 Drift & Optimization  
+## Drift & Optimization  
 **Owners: MLOps + SRE**
 
 - [ ] Runtime config matches initial intent  
