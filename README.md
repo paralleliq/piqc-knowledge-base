@@ -61,7 +61,7 @@ This repository is intentionally **model-type agnostic** and applies to:
 The repository includes a **top-level, model-agnostic readiness checklist** designed for early-stage and pre-production validation.
 
 📄 **AI Model Deployment Checklist (v0.1)**  
-📂 `CHECKLIST.md`
+📂 [`CHECKLIST.md`](./CHECKLIST.md)
 
 This checklist covers:
 - Model identity and constraints  
