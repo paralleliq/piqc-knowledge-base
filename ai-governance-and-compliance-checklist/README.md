@@ -120,3 +120,28 @@ These practices form the foundation for systematic validation and continuous opt
 - **Organizations managing high GPU spend** and seeking better utilization, predictability, and cost efficiency
 - **Teams deploying inference workloads** across cloud, on-prem, or hybrid environments
 - **Operators of multi-model or multi-tenant inference platforms** with strict latency or reliability requirements
+
+---
+
+## 🔗 Related Checklists & Guides
+
+-  **GenAI Model Deployment Checklist**  
+  [`/CHECKLIST.md`](../CHECKLIST.md)
+
+-  **AI Infrastructure Best Practices**  
+  [`ai-infrastructure-best-practices-and-playbooks/`](../ai-infrastructure-best-practices-and-playbooks/)
+
+-  **AI Infrastructure Audit & Readiness (42-Point)**  
+  [`ai-infrastructure-audit-and-readiness-checklist/`](../ai-infrastructure-audit-and-readiness-checklist/)
+
+-  **AI Governance & Compliance Checklist**  
+  [`ai-governance-and-compliance-checklist/`](../ai-governance-and-compliance-checklist/)
+
+-  **Model Deployment Quality Checklist**  
+  [`ai-model-deployment-quality-checklist/`](../ai-model-deployment-quality-checklist/)
+
+-  **LLM Inference Production Readiness (Kubernetes + vLLM)**  
+  [`llm-inference-production-readiness-checklist/`](../llm-inference-production-readiness-checklist/)
+
+-  **vLLM Runtime Metrics & Observability Guide**  
+  [`vllm-runtime-metrics-and-observability-guide/`](../vllm-runtime-metrics-and-observability-guide/)
