@@ -81,30 +81,30 @@ Use the sections below to explore the full PIQC knowledge base.
 
 ### AI Infrastructure Best Practices & Playbooks
 Production-oriented guidance for designing, deploying, and operating **efficient, reliable, and cost-optimized AI inference infrastructure**, with a focus on runtime behavior and system-level tradeoffs.  
-📂 `ai-infrastructure-best-practices-and-playbooks/`
+📂 [`ai-infrastructure-best-practices-and-playbooks/`](./ai-infrastructure-best-practices-and-playbooks/README.md)
 
 ### AI Infrastructure Audit & Readiness Checklist (42-Point Review)
 A structured, vendor-neutral framework for evaluating **compute health, networking, storage, reliability, scalability, and governance** across AI/ML infrastructure environments.  
-📂 `ai-infrastructure-audit-and-readiness-checklist/`
+📂 [`ai-infrastructure-audit-and-readiness-checklist/`](./ai-infrastructure-audit-and-readiness-checklist/README.md)
 
 ### AI Governance & Compliance Checklist
 A pragmatic compliance and governance framework covering **AI accountability, data privacy, transparency, fairness, security, and regulatory readiness**, including domain-specific extensions.  
-📂 `ai-governance-and-compliance-checklist/`
+📂 [`ai-governance-and-compliance-checklist/`](./ai-governance-and-compliance-checklist/README.md)
 
 ### Model Deployment Quality Checklist
 Conceptual diagnostic categories used to evaluate the **correctness, performance, scalability, and cost efficiency** of deployed AI/LLM model services.  
 This checklist informs the future direction of **PIQC Advisor** diagnostics.  
-📂 `ai-model-deployment-quality-checklist/`
+📂 [`ai-model-deployment-quality-checklist/`](./ai-model-deployment-quality-checklist/README.md)
 
 
 ### LLM Inference Production Readiness (Kubernetes + vLLM)
 A **Day-0 → Day-2, cross-functional readiness framework** for deploying LLMs using **vLLM on Kubernetes**, aligned across ML Engineering, MLOps, SRE, Platform, and Security teams.  
-📂 `llm-inference-production-readiness-checklist/`
+📂 [`llm-inference-production-readiness-checklist/`](./llm-inference-production-readiness-checklist/README.md)
 
 
 ### vLLM Runtime Metrics & Observability Guide
 A public, vendor-neutral catalog of **static and dynamic runtime signals** required to analyze GPU efficiency, batching behavior, latency, autoscaling correctness, and runtime drift in vLLM-based inference systems.  
-📂 `vllm-runtime-metrics-and-observability-guide/`
+📂 [`vllm-runtime-metrics-and-observability-guide/`](./vllm-runtime-metrics-and-observability-guide/README.md)
 
 ---
 
