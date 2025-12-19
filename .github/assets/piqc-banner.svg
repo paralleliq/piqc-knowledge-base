@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="PIQC Knowledge Base GitHub Banner">
+  <!--
+    Constraints respected:
+    - Pure SVG only
+    - No external fonts (system sans-serif)
+    - Safe margins ≥ 60px
+    - Background elements opacity ≤ 20%
+    - Readable at GitHub header size
+  -->
+
+  <!-- ===== DEFINITIONS ===== -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1220"></stop>
+      <stop offset="100%" stop-color="#111827"></stop>
+    </linearGradient>
+
+    <style>
+      .title {
+        font: 800 48px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        letter-spacing: -0.02em;
+      }
+      .subtitle {
+        font: 500 18px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        opacity: 0.9;
+      }
+      .pill {
+        font: 600 13px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        letter-spacing: 0.02em;
+      }
+      .icon {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect width="1200" height="320" fill="url(#bg)"></rect>
+
+  <!-- Subtle geometric shapes (right side) -->
+  <g opacity="0.15">
+    <circle cx="980" cy="100" r="120" fill="#22D3EE"></circle>
+    <circle cx="1080" cy="200" r="90" fill="#A78BFA"></circle>
+    <rect x="860" y="40" width="260" height="240" rx="28" fill="none" stroke="#22D3EE" stroke-width="2"></rect>
+  </g>
+
+  <!-- ===== LEFT CONTENT ===== -->
+  <g transform="translate(60 110)">
+    <text class="title" fill="#F9FAFB" y="0">
+      PIQC Knowledge Base
+    </text>
+
+    <text class="subtitle" fill="#E5E7EB" y="38">
+      Production-grade GenAI deployment, infrastructure quality &amp; governance
+    </text>
+  </g>
+
+  <!-- ===== ICONS (outline, minimal) ===== -->
+  <g transform="translate(60 190)" stroke="#E5E7EB" stroke-width="2" fill="none" class="icon" opacity="0.85">
+    <!-- Checklist icon -->
+    <rect x="0" y="0" width="42" height="48" rx="8"></rect>
+    <path d="M10 14 L14 18 L20 10"></path>
+    <path d="M10 28 L14 32 L20 24"></path>
+    <path d="M24 14 H32"></path>
+    <path d="M24 28 H32"></path>
+  </g>
+
+  <g transform="translate(120 196)" stroke="#E5E7EB" stroke-width="2" fill="none" class="icon" opacity="0.85">
+    <!-- GPU chip icon -->
+    <rect x="0" y="0" width="48" height="36" rx="8"></rect>
+    <rect x="10" y="8" width="28" height="20" rx="6"></rect>
+    <!-- pins -->
+    <path d="M12 -6 V0"></path>
+    <path d="M24 -6 V0"></path>
+    <path d="M36 -6 V0"></path>
+    <path d="M12 36 V42"></path>
+    <path d="M24 36 V42"></path>
+    <path d="M36 36 V42"></path>
+  </g>
+
+  <!-- ===== PILL TAGS ===== -->
+  <g transform="translate(220 190)">
+    <!-- helper function pattern -->
+    <g>
+      <rect width="140" height="30" rx="15" fill="#0B1220" stroke="#22D3EE" stroke-opacity="0.6"></rect>
+      <text x="70" y="20" text-anchor="middle" class="pill" fill="#E5E7EB">
+        AI Infrastructure
+      </text>
+    </g>
+
+    <g transform="translate(150 0)">
+      <rect width="130" height="30" rx="15" fill="#0B1220" stroke="#A78BFA" stroke-opacity="0.6"></rect>
+      <text x="65" y="20" text-anchor="middle" class="pill" fill="#E5E7EB">
+        LLM Inference
+      </text>
+    </g>
+
+    <g transform="translate(290 0)">
+      <rect width="120" height="30" rx="15" fill="#0B1220" stroke="#22D3EE" stroke-opacity="0.6"></rect>
+      <text x="60" y="20" text-anchor="middle" class="pill" fill="#E5E7EB">
+        Checklists
+      </text>
+    </g>
+
+    <g transform="translate(420 0)">
+      <rect width="130" height="30" rx="15" fill="#0B1220" stroke="#A78BFA" stroke-opacity="0.6"></rect>
+      <text x="65" y="20" text-anchor="middle" class="pill" fill="#E5E7EB">
+        Governance
+      </text>
+    </g>
+
+    <g transform="translate(560 0)">
+      <rect width="150" height="30" rx="15" fill="#0B1220" stroke="#22D3EE" stroke-opacity="0.6"></rect>
+      <text x="75" y="20" text-anchor="middle" class="pill" fill="#E5E7EB">
+        Observability
+      </text>
+    </g>
+
+    <g transform="translate(720 0)">
+      <rect width="150" height="30" rx="15" fill="#0B1220" stroke="#A78BFA" stroke-opacity="0.6"></rect>
+      <text x="75" y="20" text-anchor="middle" class="pill" fill="#E5E7EB">
+        Day-0 → Day-2
+      </text>
+    </g>
+  </g>
+</svg>
