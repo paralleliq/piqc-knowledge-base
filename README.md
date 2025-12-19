@@ -1,6 +1,8 @@
 # PIQC Knowledge Base
 ### GenAI Model Deployment Readiness, Infrastructure Best Practices & Quality Frameworks
-
+<p align="center">
+  <img src=".github/assets/piqc-banner.svg" alt="PIQC Knowledge Base"/>
+</p>
 A curated, community-driven knowledge base covering **production readiness, deployment quality, and operational best practices** for **modern AI / LLM systems**.
 
 This repository is maintained by **ParalleliQ** and serves as a public reference for how real-world AI systems should be deployed, scaled, observed, and governed  **from Day-0 experiments to Day-2 production operations**.
