@@ -6,10 +6,9 @@ A structured, cross-functional checklist for deploying **Large Language Models (
 This guide aligns responsibilities across ML Engineering, MLOps, SRE, Platform/Infra, and Security teams to ensure consistent and reliable production rollout.
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Category-LLM%20Infrastructure-blue.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/Runtime-vLLM-orange.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/Platform-Kubernetes-brightgreen.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/Stage-Day0→Day2-lightgrey.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/Category-LLM%20Infrastructure-blue.svg">
+  <img src="https://img.shields.io/badge/Runtime-vLLM-orange.svg">
+  <img src="https://img.shields.io/badge/Platform-Kubernetes-brightgreen.svg">
 </p>
 
 
@@ -204,3 +203,25 @@ This checklist helps teams validate whether an LLM is ready for production deplo
 - [ ] Batching effective under real traffic  
 - [ ] Autoscaling decisions reviewed  
 
+## 🔗 Related Checklists & Guides
+
+-  **GenAI Model Deployment Checklist**  
+  [`/CHECKLIST.md`](../CHECKLIST.md)
+
+-  **AI Infrastructure Best Practices**  
+  [`ai-infrastructure-best-practices-and-playbooks/`](../ai-infrastructure-best-practices-and-playbooks/)
+
+-  **AI Infrastructure Audit & Readiness (42-Point)**  
+  [`ai-infrastructure-audit-and-readiness-checklist/`](../ai-infrastructure-audit-and-readiness-checklist/)
+
+-  **AI Governance & Compliance Checklist**  
+  [`ai-governance-and-compliance-checklist/`](../ai-governance-and-compliance-checklist/)
+
+-  **Model Deployment Quality Checklist**  
+  [`ai-model-deployment-quality-checklist/`](../ai-model-deployment-quality-checklist/)
+
+-  **LLM Inference Production Readiness (Kubernetes + vLLM)**  
+  [`llm-inference-production-readiness-checklist/`](../llm-inference-production-readiness-checklist/)
+
+-  **vLLM Runtime Metrics & Observability Guide**  
+  [`vllm-runtime-metrics-and-observability-guide/`](../vllm-runtime-metrics-and-observability-guide/)

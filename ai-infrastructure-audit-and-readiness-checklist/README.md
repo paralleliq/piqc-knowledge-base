@@ -6,7 +6,7 @@ A structured, vendor-neutral framework for evaluating the health, efficiency, re
 
 <p align="left">
   <img src="https://img.shields.io/badge/status-active-brightgreen">
-  <img src="https://img.shields.io/badge/license-MIT-blue">
+  <img src="https://img.shields.io/badge/license-BSL-blue">
   <img src="https://img.shields.io/badge/contributions-welcome-orange">
   <img src="https://img.shields.io/badge/category-AI%20Infrastructure-purple">
 </p>
@@ -35,10 +35,10 @@ A structured, vendor-neutral framework for evaluating the health, efficiency, re
 
 ## Who This Is For
 
-- AI/ML platform teams  
-- HPC and GPU cluster operators  
-- DevOps/SRE teams running inference or training workloads  
-- Organizations seeking to optimize GPU utilization and reliability  
+- AI/ML platform & infrastructure teams  
+- HPC, GPU cluster, or Kubernetes operators  
+- DevOps/SRE teams supporting AI workloads  
+- Organizations optimizing GPU cost & availability 
 
 ## How to Use
 
@@ -120,3 +120,26 @@ A structured, vendor-neutral framework for evaluating the health, efficiency, re
 - [ ] Quotas and limits prevent resource starvation
 - [ ] Compliance requirements (PII, audit, retention) are met
 - [ ] Operational runbooks and on-call procedures exist
+
+## 🔗 Related Checklists & Guides
+
+-  **GenAI Model Deployment Checklist**  
+  [`/CHECKLIST.md`](../CHECKLIST.md)
+
+-  **AI Infrastructure Best Practices**  
+  [`ai-infrastructure-best-practices-and-playbooks/`](../ai-infrastructure-best-practices-and-playbooks/)
+
+-  **AI Infrastructure Audit & Readiness (42-Point)**  
+  [`ai-infrastructure-audit-and-readiness-checklist/`](../ai-infrastructure-audit-and-readiness-checklist/)
+
+-  **AI Governance & Compliance Checklist**  
+  [`ai-governance-and-compliance-checklist/`](../ai-governance-and-compliance-checklist/)
+
+-  **Model Deployment Quality Checklist**  
+  [`ai-model-deployment-quality-checklist/`](../ai-model-deployment-quality-checklist/)
+
+-  **LLM Inference Production Readiness (Kubernetes + vLLM)**  
+  [`llm-inference-production-readiness-checklist/`](../llm-inference-production-readiness-checklist/)
+
+-  **vLLM Runtime Metrics & Observability Guide**  
+  [`vllm-runtime-metrics-and-observability-guide/`](../vllm-runtime-metrics-and-observability-guide/)
