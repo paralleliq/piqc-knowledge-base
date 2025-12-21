@@ -235,3 +235,12 @@ Together, we can build better AI infrastructure standards.
 ---
 
 *Thanks for contributing and helping shape better AI infrastructure standards.*
+
+
+---
+
+<div align="center">
+  <sub>Part of the <a href="https://github.com/paralleliq/piqc-knowledge-base">PIQC Knowledge Base</a></sub>
+  <br/>
+  <sub>Maintained by <a href="https://paralleliq.ai">ParalleliQ</a></sub>
+</div>
