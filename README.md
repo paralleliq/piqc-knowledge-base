@@ -1,18 +1,19 @@
-# PIQC Knowledge Base
-### GenAI Model Deployment Readiness, Infrastructure Best Practices & Quality Frameworks
+# PIQC Knowledge Base  
+### Production Readiness Standards for GenAI, LLMs, and AI Infrastructure
+
 <p align="center">
-  <img src=".github/assets/piqc-banner.svg" alt="PIQC Knowledge Base"/>
+  <img src=".github/assets/piqc-banner.svg" alt="PIQC Knowledge Base" width="820"/>
 </p>
 
-A curated, community-driven knowledge base covering **production readiness, deployment quality, and operational best practices** for **modern AI / LLM systems**.
+A neutral, community-driven collection of **deployment checklists**, **infrastructure best practices**, **runtime diagnostics**, and **governance frameworks** for modern **AI / LLM systems**.
 
-This repository is maintained by **ParalleliQ** and serves as a public reference for how real-world AI systems should be deployed, scaled, observed, and governed  **from Day-0 experiments to Day-2 production operations**.
+This repository exists to help teams build **reliable**, **observable**, **scalable**, and **cost-efficient** AI systems—from **Day-0 model preparation**, to **Day-1 infrastructure setup**, to **Day-2 production operations**.
 
 <p align="left">
   <img src="https://img.shields.io/badge/Category-AI%20Infrastructure-blue.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/Focus-Model%20Deployment%20Quality-brightgreen.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/Scope-GenAI%20%7C%20LLMs%20%7C%20Multimodal-lightgrey.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/License-Apache%202.0-orange.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/Focus-Deployment%20Readiness-brightgreen.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/Scope-GenAI%20%7C%20LLMs%20%7C%20Inference-lightgrey.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/License-BSL-orange.svg?style=flat-square">
 </p>
 
 ---
@@ -20,35 +21,34 @@ This repository is maintained by **ParalleliQ** and serves as a public reference
 
 ## 📘 Overview
 
-Deploying Generative AI systems in production is fundamentally different from deploying traditional microservices.
+Deploying AI systems—LLMs, diffusion models, embedding pipelines, or multimodal agents—is fundamentally different from deploying traditional microservices.
 
 GenAI workloads introduce:
-- GPU memory pressure and fragmentation  
-- Non-linear batching behavior  
-- Long warmup cycles  
-- Tail-latency sensitivity  
-- Complex autoscaling signals  
-- High cost volatility  
 
-These characteristics demand specialized deployment discipline.
+- **Non-linear batching behavior**
+- **GPU memory fragmentation & KV pressure**
+- **Warmup cycles & cold-start latency**
+- **Tail-latency sensitivity**
+- **Parallelism configuration (TP/PP)**
+- **Autoscaling complexity**
+- **High and unpredictable cost curves**
 
-The **PIQC Knowledge Base** exists to capture and organize that discipline into **clear, reusable, and community-friendly checklists and frameworks**.
+The **PIQC Knowledge Base** organizes this operational knowledge into **clear, reusable, vendor-neutral standards**, helping teams achieve:
+
+- 🔧 **Correctness**  
+- 🚀 **Performance & throughput**  
+- ⚖️ **Cost efficiency**  
+- 🔍 **Observability & diagnostics**  
+- 🛡️ **Security & governance alignment**  
+- 🏗️ **Production readiness**
 
 All content is:
-- **High-level and conceptual**
-- **Framework-agnostic**
-- **Infrastructure-neutral**
-- **Safe for public discussion**
-- **Free of proprietary algorithms**
 
-It provides structured, high-level guidance to help teams ensure their AI systems are:
-
-- **Performant**
-- **Reliable**
-- **Observable**
-- **Cost-efficient**
-- **Secure & compliant**
-- **Production-ready**
+- **Framework-agnostic**  
+- **Runtime-neutral**  
+- **Cloud-agnostic**  
+- **High-level and safe for public discussion**  
+- **Designed for real-world teams** (ML Eng, MLOps, SRE, Platform Eng, DevOps)
 
 This repository is intentionally **model-type agnostic** and applies to:
 
@@ -81,6 +81,9 @@ This checklist covers:
 ## 📚 Knowledge Base Navigation
 
 Use the sections below to explore the full PIQC knowledge base.
+### Core GenAI Model Deployment Checklist  
+The top-level, model-agnostic checklist for validating deployment readiness.  
+📂 [`CHECKLIST.md`](./CHECKLIST.md)
 
 ### AI Infrastructure Best Practices & Playbooks
 Production-oriented guidance for designing, deploying, and operating **efficient, reliable, and cost-optimized AI inference infrastructure**, with a focus on runtime behavior and system-level tradeoffs.  
@@ -113,16 +116,16 @@ A public, vendor-neutral catalog of **static and dynamic runtime signals** requi
 
 ## 🧭 Purpose & Philosophy
 
-This knowledge base is designed to:
+This project aims to:
 
-- Promote **industry-wide best practices** for AI infrastructure
-- Establish **shared terminology** and evaluation frameworks
-- Reduce reliance on fragmented tribal knowledge
-- Encourage **community discussion and iteration**
-- Serve as a conceptual foundation for tools such as **PIQC Scanner**, **ModelSpec**, and the planned **PIQC Advisor**
+- Define **industry-aligned operational standards** for AI/LLM systems  
+- Reduce dependence on tribal or undocumented knowledge  
+- Provide vendor-neutral, cloud-neutral guidance  
+- Create consistency across teams and organizations  
+- Establish the foundation for future specs (ModelSpec, RuntimeSpec, PIQC Advisor)
 
-> All materials in this repository are **conceptual and high-level**.  
-> No proprietary algorithms, scoring logic, heuristics, or advisor implementations are included.
+> ⚠️ **No proprietary logic, algorithms, or scoring systems are included.**  
+> Everything in this repository is public, safe, and conceptual.
 
 ---
 
@@ -155,14 +158,38 @@ The content is intentionally high-level to:
 
 ## ⭐ Why This Matters
 
-Modern AI deployments often rely on fragmented configuration spread across:
-- container images
-- orchestration manifests
-- CLI flags
-- dashboards
-- and undocumented operational knowledge
+AI deployment is rapidly evolving, and organizations often struggle with:
 
-A shared, community-driven knowledge base creates consistency and lays the groundwork for **standardized specifications**, **automated diagnostics**, and **better tooling** across the AI infrastructure ecosystem.
+- Fragmented documentation  
+- Runtime misconfigurations  
+- GPU inefficiencies  
+- Sudden cost explosions  
+- Unpredictable latency  
+- Blind spots in observability  
+- Missing governance controls  
+- Lack of shared standards  
+
+The **PIQC Knowledge Base** helps teams adopt a **common language**, reduce repeated mistakes, and move toward more **predictable, reliable, and efficient GenAI operations**.
+
+## 🙌 Acknowledgment
+
+This project exists thanks to contributions from engineers, researchers, and practitioners committed to building **safer**, **faster**, and **more reliable** AI systems.
+
+The goal is simple:
+
+> **Make AI deployment knowledge open, neutral, and accessible to everyone.**
+
+---
+## 🔗 Stay Connected
+
+Because the project is neutral & community-owned, there are **no personal branding links**, but you are encouraged to:
+
+- ⭐ Star the repo  
+- ⬆️ Create issues  
+- 🔧 Submit PRs  
+- 🧠 Share it with your team  
+
+Together, we can build better AI infrastructure standards.
 
 ---
 
