@@ -97,6 +97,10 @@ A structured, vendor-neutral framework for evaluating **compute health, networki
 A pragmatic compliance and governance framework covering **AI accountability, data privacy, transparency, fairness, security, and regulatory readiness**, including domain-specific extensions.  
 📂 [`ai-governance-and-compliance-checklist/`](./ai-governance-and-compliance-checklist/README.md)
 
+### AI Cluster Bring-Up Checklist  
+A structured, end-to-end framework for bringing up a **bare-metal AI GPU cluster**, covering **hardware, networking, orchestration, runtime, observability, security, and operational readiness**.  
+📂 [`ai-cluster-bringup-checklist/`](./ai-cluster-bringup-checklist/README.md)
+
 ### Model Deployment Quality Checklist
 Conceptual diagnostic categories used to evaluate the **correctness, performance, scalability, and cost efficiency** of deployed AI/LLM model services.  
 This checklist informs the future direction of **PIQC Advisor** diagnostics.  
