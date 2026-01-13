@@ -81,6 +81,7 @@
 - [AI Infrastructure Best Practices](../ai-infrastructure-best-practices-and-playbooks/)  
 - [AI Infrastructure Audit Checklist](../ai-infrastructure-audit-and-readiness-checklist/)  
 - [AI Governance & Compliance Checklist](../ai-governance-and-compliance-checklist/)  
+- [AI Cluster Bringup Checklist](../ai-cluster-bringup-checklist/)  
 - [Model Deployment Quality Checklist](../ai-model-deployment-quality-checklist/)  
 - [LLM Inference Production Readiness](../llm-inference-production-readiness-checklist/)  
 - [vLLM Runtime Metrics Guide](../vllm-runtime-metrics-and-observability-guide/)

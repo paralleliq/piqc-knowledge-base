@@ -219,6 +219,9 @@ These signals form the public, non-proprietary specification of what PIQC Adviso
 -  **AI Governance & Compliance Checklist**  
   [`ai-governance-and-compliance-checklist/`](../ai-governance-and-compliance-checklist/)
 
+-  **AI Cluster Bringup Checklist**  
+  [`ai-cluster-bringup-checklist/`](../ai-cluster-bringup-checklist/)
+
 -  **Model Deployment Quality Checklist**  
   [`ai-model-deployment-quality-checklist/`](../ai-model-deployment-quality-checklist/)
 

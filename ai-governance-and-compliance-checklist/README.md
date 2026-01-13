@@ -140,6 +140,9 @@ These practices form the foundation for systematic validation and continuous opt
 -  **Model Deployment Quality Checklist**  
   [`ai-model-deployment-quality-checklist/`](../ai-model-deployment-quality-checklist/)
 
+-  **AI Cluster BringupChecklist**  
+  [`ai-cluster-bringup-checklist/`](../ai-cluster-bringup-checklist/)
+
 -  **LLM Inference Production Readiness (Kubernetes + vLLM)**  
   [`llm-inference-production-readiness-checklist/`](../llm-inference-production-readiness-checklist/)
 

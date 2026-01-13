@@ -135,6 +135,9 @@ A structured, vendor-neutral framework for evaluating the health, efficiency, re
 -  **AI Governance & Compliance Checklist**  
   [`ai-governance-and-compliance-checklist/`](../ai-governance-and-compliance-checklist/)
 
+-  **AI Cluster Bringup Checklist**  
+  [`ai-cluster-bringup-checklist/`](../ai-cluster-bringup-checklist/)
+
 -  **Model Deployment Quality Checklist**  
   [`ai-model-deployment-quality-checklist/`](../ai-model-deployment-quality-checklist/)
 
