@@ -113,6 +113,16 @@ Most KV cache failures only appear under realistic traffic.
 
 ---
 
+## 9) Use chunked prefill for long-context / RAG workloads (if supported)
+
+Chunked prefill processes long prompts in smaller segments to reduce peak KV cache allocation and improve batching stability under memory pressure.
+
+- [ ] If you serve long-context or RAG traffic, evaluate enabling **chunked prefill**
+- [ ] Validate impact on latency and throughput under realistic long-prompt load
+- [ ] Monitor GPU memory headroom and effective batch size before/after enabling
+
+---
+
 ## Summary
 
 KV cache pressure is not a tuning accident — it is a **control problem**.
