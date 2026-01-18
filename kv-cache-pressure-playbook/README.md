@@ -92,6 +92,7 @@ Prevention requires:
 - explicit concurrency limits
 - explicit GPU memory headroom
 - visibility into batch effectiveness
+- possibly chunked prefill
 
 👉 Prevention checklist:  [`prevention.md`](./prevention.md)
 
