@@ -48,8 +48,7 @@ You are likely experiencing KV cache pressure if several of these occur together
 - p95 / p99 latency increases sharply
 - Pods eventually restart or get OOMKilled
 
-👉 See detailed symptoms:  
-[`symptoms.md`](./symptoms.md)
+👉 See detailed symptoms:  [`symptoms.md`](./symptoms.md)
 
 ---
 
@@ -62,8 +61,7 @@ If the system is already unstable, apply these immediately:
 - Reduce batching aggressiveness
 - Reserve GPU memory headroom
 
-👉 Step-by-step commands:  
-[`emergency-mitigation.md`](./emergency-mitigation.md)
+👉 Step-by-step commands:  [`emergency-mitigation.md`](./emergency-mitigation.md)
 
 ---
 
@@ -75,8 +73,7 @@ To verify this is KV cache pressure (not networking or autoscaling):
 - Check vLLM logs for allocation failures
 - Correlate request size and concurrency
 
-👉 Diagnostics:  
-[`diagnostics.md`](./diagnostics.md)
+👉 Diagnostics:  [`diagnostics.md`](./diagnostics.md)
 
 ---
 
@@ -90,8 +87,7 @@ Prevention requires:
 - explicit GPU memory headroom
 - visibility into batch effectiveness
 
-👉 Prevention checklist:  
-[`prevention.md`](./prevention.md)
+👉 Prevention checklist:  [`prevention.md`](./prevention.md)
 
 ---
 
