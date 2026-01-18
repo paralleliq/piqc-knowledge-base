@@ -1,9 +1,3 @@
-
----
-
-# `prevention.md`
-
-```markdown
 # Prevention: Training–Serving Skew
 
 Skew is best prevented by treating deployment settings as a **contract**.
