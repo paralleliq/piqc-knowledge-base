@@ -6,9 +6,7 @@ Common indicators include:
 
 ### - GPU memory steadily rising under traffic
 
-kubectl exec <vllm-pod> -- nvidia-smi \
-  --query-gpu=memory.used,memory.total \
-  --format=csv -l 5
+kubectl exec \<vllm-pod\> -- nvidia-smi --query-gpu=memory.used,memory.total --format=csv -l 5
 
 or via Prometheus/DCGM:
 
@@ -18,9 +16,7 @@ A steady upward trend under sustained load is a strong early signal.
 
 ### - GPU compute utilization dropping
 
-kubectl exec <vllm-pod> -- nvidia-smi \
-  --query-gpu=utilization.gpu \
-  --format=csv -l 5
+kubectl exec \<vllm-pod\> -- nvidia-smi --query-gpu=utilization.gpu --format=csv -l 5
 
 or via Prometheus:
 
