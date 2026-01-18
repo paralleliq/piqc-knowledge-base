@@ -9,6 +9,10 @@ This playbook helps you:
 - apply safe mitigations
 - prevent recurrence with “contract-style” configuration (for example, [ModelSpec](https://github.com/paralleliq/modelspec))
 
+> **Applies across models, runtimes, and infrastructure**
+>
+> Training–serving skew arises when assumptions made during training diverge from production runtime behavior, serving configuration, or infrastructure constraints. Training–serving skew is not framework- or vendor-specific.  The examples use CUDA because that’s what’s most familiar today.
+
 
 ## When to use this
 Use this playbook if you observe:
