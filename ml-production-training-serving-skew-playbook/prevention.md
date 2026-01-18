@@ -15,7 +15,7 @@ Skew is best prevented by treating deployment settings as a **contract**.
 
 ---
 
-## 2) Make intent explicit (ModelSpec-style)
+## 2) Make intent explicit ([ModelSpec-style](https://github.com/paralleliq/modelspec))
 Declare the intended:
 - model identity + revision
 - runtime engine + version
