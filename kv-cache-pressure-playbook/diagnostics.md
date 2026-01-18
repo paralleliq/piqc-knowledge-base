@@ -15,14 +15,12 @@ The goal is to distinguish KV cache pressure from:
 ## Quick triage (5 minutes)
 
 ### 1) Identify the vLLM pods
-```bash
 kubectl get pods -n <namespace> -l app=<vllm-label>
 Replace <namespace> and <vllm-label> with your deployment values
 (e.g. namespace=inference, app=vllm).
 
-2) Check for restarts or OOMKills
-bash
-Copy code
+### 2) Check for restarts or OOMKills
+
 kubectl get pods -n <namespace> -l app=<vllm-label> -o wide
 kubectl describe pod -n <namespace> <pod-name> | egrep -i "oomkilled|reason|exit code|killed|restart"
 Interpretation
@@ -36,10 +34,10 @@ KV cache pressure has a distinctive signature:
 
 GPU memory is high while GPU compute utilization is low
 
-3) Inspect GPU memory and utilization
-bash
-Copy code
+### 3) Inspect GPU memory and utilization
+
 kubectl exec -n <namespace> -it <pod-name> -- nvidia-smi
+
 What to look for
 
 GPU memory usage consistently above ~85–90%
@@ -52,9 +50,8 @@ memory is saturated by KV cache
 
 compute cannot be effectively scheduled or batched
 
-4) Inspect vLLM logs for allocation pressure
-bash
-Copy code
+### 4) Inspect vLLM logs for allocation pressure
+
 kubectl logs -n <namespace> <pod-name> --since=2h | grep -i -E "kv|cache|cuda|oom|alloc|out of memory|memory"
 Common indicators
 
@@ -69,7 +66,7 @@ Warnings often appear before a crash.
 Identify the trigger
 KV cache pressure is usually triggered by request shape, not raw traffic volume.
 
-5) Examine request characteristics (if available)
+### 5) Examine request characteristics (if available)
 Check ingress, gateway, or application logs for:
 
 unusually long prompts
@@ -82,15 +79,13 @@ long-lived streaming responses
 
 KV cache grows roughly with:
 
-powershell
-Copy code
 concurrency × tokens-in-flight
 Long prompts or high concurrency are common triggers.
 
 Check Kubernetes context
-6) Review recent Kubernetes events
-bash
-Copy code
+
+### 6) Review recent Kubernetes events
+
 kubectl get events -n <namespace> --sort-by=.lastTimestamp | tail -n 50
 Why this matters
 
@@ -107,14 +102,14 @@ These do not cause KV cache pressure directly, but they can amplify or obscure s
 Validate batching collapse (if metrics are available)
 If you expose vLLM or Prometheus metrics:
 
-7) Port-forward the metrics endpoint
-bash
-Copy code
+### 7) Port-forward the metrics endpoint
+
 kubectl port-forward -n <namespace> <pod-name> 9100:9100
-8) Inspect metrics
-bash
-Copy code
+
+### 8) Inspect metrics
+
 curl -s localhost:9100/metrics | head
+
 Signals to look for
 
 effective batch size (p95) dropping to ~1–2
