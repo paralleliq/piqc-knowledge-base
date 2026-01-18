@@ -7,7 +7,8 @@ This playbook helps you:
 - detect skew quickly
 - identify where mismatch is happening (model, runtime, hardware, serving, orchestration)
 - apply safe mitigations
-- prevent recurrence with “contract-style” configuration (e.g., ModelSpec)
+- prevent recurrence with “contract-style” configuration (for example, [ModelSpec](https://github.com/paralleliq/modelspec))
+
 
 ## When to use this
 Use this playbook if you observe:
