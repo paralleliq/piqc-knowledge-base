@@ -17,7 +17,7 @@ kubectl get pods -n \<namespace\> -l app=\<vllm-label\> -watch
 
 recommended: Show restart counts explicitly
 
-kubectl get pods -n \<namespace\> -l app=\<app-name\> \
+kubectl get pods -n \<namespace\> -l app=\<app-name\> \\
   -o custom-columns=NAME:.metadata.name,RESTARTS:.status.containerStatuses[*].restartCount
 
 ### Step 1 — Stabilize traffic (fastest win)
@@ -69,9 +69,11 @@ Lower GPU memory utilization target
 Set:
 
 --gpu-memory-utilization 0.7
+
 If still unstable, go lower:
 
 --gpu-memory-utilization 0.6
+
 Why it helps:
 
 leaves room for allocator overhead and fragmentation
@@ -85,6 +87,7 @@ Patch your deployment (typical workflow)
 Edit the deployment (recommended):
 
 kubectl edit deploy -n \<namespace\> \<deployment-name\>
+
 Or update your Helm values / manifest and redeploy.
 
 Then watch rollout:
