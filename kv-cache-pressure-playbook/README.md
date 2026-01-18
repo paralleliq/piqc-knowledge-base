@@ -8,6 +8,12 @@ LLM inference using vLLM on Kubernetes:
 This issue typically appears *before* crashes, when the system is already
 degraded but still serving traffic.
 
+> **Applies to AMD and NVIDIA GPUs**
+>
+> KV cache pressure is a function of model architecture, sequence length, and concurrency.
+> It affects LLM runtimes on both AMD and NVIDIA GPUs equally.
+> The examples in this guide use vLLM metrics on NVIDIA hardware; equivalent signals exist on AMD via ROCm tooling.
+
 ---
 
 ## What this playbook covers
