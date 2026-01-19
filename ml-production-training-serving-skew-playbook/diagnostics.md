@@ -25,8 +25,8 @@ kubectl get pods -n \<ns\> -l app=\<app\>
 
 Check image + restarts:
 
-kubectl get pods -n <ns> -l app=<app> \\
-  -o custom-columns=NAME:.metadata.name,IMAGES:.spec.containers[*].image,RESTARTS:.status.containerStatuses[*].restartCount
+kubectl get pods -n \<ns\> -l app=\<app\> 
+  -o custom-columns=NAME:.metadata.name,IMAGES:.spec.containers[\*].image,RESTARTS:.status.containerStatuses[\*].restartCount
 
 
 Describe the workload:
@@ -80,6 +80,7 @@ kubectl logs -n \<ns\> \<pod\> --since=2h | grep -iE "model|tokenizer|revision|c
 If you mount artifacts:
 
 kubectl exec -n \<ns\> \<pod\> -- ls -lah /models || true
+
 kubectl exec -n \<ns\> \<pod\> -- find /models -maxdepth 2 -type f | head
 
 ### 3.2 Runtime config mismatch (dtype/quant/batching/context/concurrency)
@@ -101,11 +102,13 @@ tensor parallel (tp) and pipeline parallel (pp)
 Inspect args/env:
 
 kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.containers[0].args}' ; echo
+
 kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.containers[0].env}'  ; echo
 
 Check vLLM metrics endpoint (if exposed):
 
 kubectl port-forward -n \<ns\> pod/\<pod\> 8000:8000
+
 curl -s localhost:8000/metrics | grep -iE "token|request|latency|batch|running|queue" | head -n 80
 
 ### 3.3 Hardware mismatch (GPU class/VRAM/interconnect/drivers)
@@ -125,12 +128,14 @@ PCIe vs NVLink/NVSwitch in multi-GPU
 If nvidia-smi is present in the container:
 
 kubectl exec -n \<ns\> \<pod\> -- nvidia-smi
+
 kubectl exec -n \<ns\> \<pod\> -- nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 
 
 Also check node scheduling:
 
 kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.nodeName}{"\n"}'
+
 kubectl describe node/\<node\> | grep -iE "gpu|nvidia|allocatable|capacity" -n
 
 ### 3.4 Serving layer mismatch (timeouts/streaming/retries/request limits)
@@ -150,6 +155,7 @@ request size limits / max body size
 Check ingress/service annotations:
 
 kubectl describe ingress/\<name\> -n \<ns\>
+
 kubectl describe svc/\<name\> -n \<ns\>
 
 
@@ -176,9 +182,11 @@ warm pool / min replicas changed
 #### Commands
 
 kubectl get hpa -n \<ns\>
+
 kubectl describe hpa/\<name\> -n \<ns\>
 
 kubectl get deploy/\<name\> -n \<ns\> -o jsonpath='{.spec.template.spec.containers[0].resources}{"\n"}'
+
 kubectl get deploy/\<name\> -n \<ns\> -o jsonpath='{.spec.template.spec.affinity}{"\n"}'
 
 ## 4) Minimal evidence bundle (attach to an issue)
