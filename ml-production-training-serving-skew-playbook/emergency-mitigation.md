@@ -8,8 +8,9 @@ Goal: restore service quickly, then do deeper root cause analysis.
 ## 1) Roll back to last-known-good
 If you have a previous image tag or GitOps revision:
 
-kubectl rollout undo deploy/<name> -n <ns>
-kubectl rollout status deploy/<name> -n <ns>
+kubectl rollout undo deploy/\<name\> -n \<ns\>
+
+kubectl rollout status deploy/\<name\> -n \<ns\>
 
 ## 2) Pin the configuration (stop “drift”)
 
@@ -31,8 +32,9 @@ explicitly set dtype and max model len
 
 Validate by re-checking args/env:
 
-kubectl get pod/<pod> -n <ns> -o jsonpath='{.spec.containers[0].args}' ; echo
-kubectl get pod/<pod> -n <ns> -o jsonpath='{.spec.containers[0].env}'  ; echo
+kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.containers[0].args}' ; echo
+
+kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.containers[0].env}'  ; echo
 
 ## 3) Stabilize latency by reducing risk factors
 
@@ -68,8 +70,9 @@ or temporarily scale down the “bad” nodes / tainted nodes (env-specific)
 
 Quick confirm:
 
-kubectl get pod/<pod> -n <ns> -o jsonpath='{.spec.nodeName}{"\n"}'
-kubectl exec -n <ns> <pod> -- nvidia-smi --query-gpu=name,memory.total --format=csv
+kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.nodeName}{"\n"}'
+
+kubectl exec -n \<ns\> \<pod\> -- nvidia-smi --query-gpu=name,memory.total --format=csv
 
 ## 6) Declare the incident resolved only after validation
 
