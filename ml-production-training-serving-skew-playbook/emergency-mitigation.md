@@ -14,7 +14,7 @@ kubectl rollout status deploy/\<name\> -n \<ns\>
 
 ## 2) Pin the configuration (stop “drift”)
 
-Common drift sources:
+### Common drift sources:
 
 using :latest
 
@@ -22,7 +22,7 @@ unpinned model revision
 
 default dtype changing between versions
 
-Actions:
+### Actions:
 
 pin image tag (immutable)
 
@@ -38,7 +38,7 @@ kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.containers[0].env}'  ; ech
 
 ## 3) Stabilize latency by reducing risk factors
 
-If you’re seeing tail latency spikes:
+### If you’re seeing tail latency spikes:
 
 reduce max output tokens temporarily
 
@@ -46,29 +46,29 @@ reduce max prompt tokens / max context length temporarily
 
 reduce concurrency (max running sequences)
 
-This trades capacity for stability, but avoids meltdown.
+### This trades capacity for stability, but avoids meltdown.
 
 Keep changes small; document them so you can revert.
 
 ## 4) Route/segment traffic (if available)
 
-If you can route:
+### If you can route:
 
 send long-context requests to a dedicated deployment
 
 keep normal chat traffic separate
 
-This prevents a small fraction of heavy requests from destabilizing the whole fleet.
+### This prevents a small fraction of heavy requests from destabilizing the whole fleet.
 
 ## 5) If you suspect hardware skew
 
-If the deployment may have landed on different GPU class:
+### If the deployment may have landed on different GPU class:
 
 add node selectors/affinity to force the expected GPU
 
 or temporarily scale down the “bad” nodes / tainted nodes (env-specific)
 
-Quick confirm:
+### Quick confirm:
 
 kubectl get pod/\<pod\> -n \<ns\> -o jsonpath='{.spec.nodeName}{"\n"}'
 
@@ -76,7 +76,7 @@ kubectl exec -n \<ns\> \<pod\> -- nvidia-smi --query-gpu=name,memory.total --for
 
 ## 6) Declare the incident resolved only after validation
 
-Minimum validation:
+### Minimum validation:
 
 tokens/sec back near baseline
 
