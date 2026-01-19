@@ -16,17 +16,22 @@ The goal is to distinguish KV cache pressure from:
 
 ### 1) Identify the vLLM pods
 
+```bash
 kubectl get pods -n \<namespace\> -l app=\<app-label-value\>
+```
 
 Example:
 
+```bash
 kubectl get pods -n inference -l app=vllm
+```
 
 ### 2) Check for restarts or OOMKills
 
+```bash
 kubectl get pods -n \<namespace\> -l app=\<app-label-value\> -o wide
-
 kubectl describe pod/\<pod-name\> -n \<namespace\> | egrep -i "oomkilled|reason|exit code|killed|restart|evict"
+```
 
 Interpretation
 
@@ -42,7 +47,9 @@ GPU memory is high while GPU compute utilization is low
 
 ### 3) Inspect GPU memory and utilization
 
+```bash
 kubectl exec -n \<namespace\> -it pod/\<pod-name\> -c \<container-name\> -- nvidia-smi
+```
 
 What to look for
 
@@ -58,11 +65,15 @@ compute cannot be effectively scheduled or batched
 
 ### 4) Inspect vLLM logs for allocation pressure
 
+```bash
 kubectl logs -n \<namespace\> pod/\<pod-name\> -c \<container-name\> --since=2h | grep -i -E "kv|cache|cuda|oom|alloc|out of memory|memory"
+```
 
 If the container restarted, also check previous logs:
 
+```bash
 kubectl logs -n \<namespace\> pod/\<pod-name\> -c \<container-name\> --previous --since=2h | grep -i -E "kv|cache|cuda|oom|alloc|out of memory|memory"
+```
 
 Common indicators
 
@@ -100,7 +111,9 @@ Check Kubernetes context
 
 ### 6) Review recent Kubernetes events
 
+```bash
 kubectl get events -n \<namespace\> --sort-by=.lastTimestamp | tail -n 50
+```
 
 Why this matters
 
@@ -120,27 +133,31 @@ If you expose vLLM or Prometheus metrics:
 
 ### 7) Port-forward the metrics endpoint (if metrics are available)
 
+```bash
 kubectl get pod/\<pod-name\> -n \<namespace\> -o jsonpath='{range .spec.containers[\*]}{.name}{"\t"}{.ports}{"\n"}{end}' ; echo
-
+```
 
 Fallback if ports are not declared in the spec:
 
+```bash
 kubectl describe pod/\<pod-name\> -n \<namespace\> | grep -i -A2 "Ports"
+```
 
 If you already expose /metrics on the main HTTP port (common), it’s often 8000.
 
 ### 8) Inspect metrics
 
+```bash
 kubectl port-forward -n \<namespace\> pod/\<pod-name\> \<local-port\>:\<container-port\>
-
 curl -s localhost:\<local-port\>/metrics | head
+```
 
 Example: Using metric endpoint on container port 8000
 
+```bash
 kubectl port-forward -n \<namespace\> pod/\<pod-name\> 8000:8000
-
 curl -s localhost:8000/metrics | head
-
+```
 
 Signals to look for
 
