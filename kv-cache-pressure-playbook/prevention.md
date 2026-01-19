@@ -16,7 +16,8 @@ KV cache grows with tokens-in-flight. Never trust clients to self-limit.
 - [ ] Requests exceeding limits are **rejected**, not truncated silently  
 - [ ] Streaming responses have bounded duration / tokens  
 
-**Why it matters:**  
+**Interpretation:** 
+
 Long or unbounded prompts are the most common trigger of KV cache explosions.
 
 ---
@@ -29,7 +30,8 @@ Concurrency directly multiplies KV cache usage.
 - [ ] Concurrency is derived from **GPU memory**, not guesswork  
 - [ ] Separate deployments for long-context vs short-context traffic  
 
-**Why it matters:**  
+**Interpretation:** 
+
 Scaling replicas does not fix per-replica KV pressure.
 
 ---
@@ -42,7 +44,8 @@ Batching improves throughput but increases tokens-in-flight.
 - [ ] Batching limits are tested under peak prompt sizes  
 - [ ] Batch effectiveness is monitored (p95, p99)  
 
-**Why it matters:**  
+**Interpretation:**  
+
 Unbounded batching accelerates KV cache growth and fragmentation.
 
 ---
@@ -55,7 +58,8 @@ Avoid running GPUs “full”.
 - [ ] Lower (≤ 0.6) for long-context or bursty workloads  
 - [ ] Headroom validated under peak traffic  
 
-**Why it matters:**  
+**Interpretation:**  
+
 Allocator overhead and fragmentation cause crashes before memory is truly “full”.
 
 ---
@@ -69,7 +73,8 @@ GPU utilization alone is misleading.
 - [ ] p95 / p99 request latency  
 - [ ] Active sequences / in-flight requests  
 
-**Why it matters:**  
+**Interpretation:**  
+
 KV cache pressure presents as **memory high + compute low**.
 
 ---
@@ -83,7 +88,8 @@ Understand what your users are sending.
 - [ ] Bursty traffic patterns identified  
 - [ ] RAG chunk sizes bounded  
 
-**Why it matters:**  
+**Interpretation:**  
+
 Traffic *shape* matters more than raw QPS.
 
 ---
@@ -97,7 +103,8 @@ Prevent “it worked in staging” failures.
 - [ ] GPU memory targets documented  
 - [ ] Reviewed before production rollout  
 
-**Why it matters:**  
+**Interpretation:**  
+
 Undeclared intent leads to rediscovering limits during incidents.
 
 ---
@@ -108,7 +115,8 @@ Undeclared intent leads to rediscovering limits during incidents.
 - [ ] Load tests include **burst scenarios**  
 - [ ] KV cache behavior observed during tests  
 
-**Why it matters:**  
+**Interpretation:**  
+
 Most KV cache failures only appear under realistic traffic.
 
 ---
