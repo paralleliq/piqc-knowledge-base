@@ -23,8 +23,8 @@ It does **not** measure:
 You should always observe GPU utilization together with:
 
 ### GPU-level signals
-```bash
-kubectl exec <vllm-pod> -- nvidia-smi \
+
+kubectl exec \<vllm-pod\> -- nvidia-smi \
   --query-gpu=utilization.gpu,memory.used,memory.total \
   --format=csv -l 5
 
@@ -38,7 +38,7 @@ Runtime-level signals (vLLM)
 
 If the metrics endpoint is exposed:
 
-kubectl port-forward pod/<vllm-pod> 8000:8000
+kubectl port-forward pod/\<vllm-pod\> 8000:8000
 curl -s localhost:8000/metrics | grep -iE "token|batch|latency|running|queue"
 
 
@@ -83,8 +83,7 @@ The answers determine whether low utilization is a problem — or expected behav
 
 Before interpreting GPU utilization, confirm whether MIG is enabled.
 
-```bash
-kubectl exec <vllm-pod> -- nvidia-smi -L
+kubectl exec \<vllm-pod\> -- nvidia-smi -L
 
 If MIG is enabled, you will see output similar to:
 
