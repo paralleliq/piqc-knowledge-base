@@ -9,16 +9,22 @@ Goal: **stop the bleeding** by reducing KV cache growth and restoring headroom.
 
 ### Identify the vLLM pods
 
-kubectl get pods -n \<namespace\> -l app=\<vllm-label\>
+```bash
+kubectl get pods -n <namespace> -l app=<vllm-label>
+```
 
 Optional: watch restarts
 
-kubectl get pods -n \<namespace\> -l app=\<vllm-label\> -watch
+```bash
+kubectl get pods -n <namespace> -l app=<vllm-label> -watch
+```
 
 recommended: Show restart counts explicitly
 
-kubectl get pods -n \<namespace\> -l app=\<app-name\> \\
+```bash
+kubectl get pods -n <namespace> -l app=<app-name> \
   -o custom-columns=NAME:.metadata.name,RESTARTS:.status.containerStatuses[*].restartCount
+```
 
 ### Step 1 — Stabilize traffic (fastest win)
 
@@ -40,7 +46,9 @@ Lower max_num_seqs (vLLM concurrency)
 
 In your vLLM args/env, reduce:
 
---max-num-seqs \<lower-value\>
+```bash
+--max-num-seqs <lower-value>
+```
 
 Rule of thumb: cut it by 25–50% during an incident.
 
@@ -55,7 +63,9 @@ lowering concurrency reduces KV memory pressure immediately
 Lower max-num-batched-tokens
 Reduce:
 
---max-num-batched-tokens \<lower-value\>
+```bash
+--max-num-batched-tokens <lower-value>
+```
 
 Why it helps:
 
@@ -68,11 +78,15 @@ reducing it reduces KV cache footprint and fragmentation risk
 Lower GPU memory utilization target
 Set:
 
+```bash
 --gpu-memory-utilization 0.7
+```
 
 If still unstable, go lower:
 
+```bash
 --gpu-memory-utilization 0.6
+```
 
 Why it helps:
 
@@ -86,26 +100,35 @@ Patch your deployment (typical workflow)
 
 Edit the deployment (recommended):
 
-kubectl edit deploy -n \<namespace\> \<deployment-name\>
+```bash
+kubectl edit deploy -n <namespace> <deployment-name>
+```
 
 Or update your Helm values / manifest and redeploy.
 
 Then watch rollout:
 
-kubectl rollout status deploy -n \<namespace\> \<deployment-name\>
+```bash
+kubectl rollout status deploy -n <namespace> <deployment-name>
+```
+
 ### Step 6 — If you are already crashing (controlled restart)
 
 If pods are repeatedly OOMKilled or memory is badly fragmented, do a controlled restart
 after you have reduced limits:
 
-kubectl rollout restart deploy -n \<namespace\> \<deployment-name\>
-kubectl rollout status deploy -n \<namespace\> \<deployment-name\>
+```bash
+kubectl rollout restart deploy -n <namespace> <deployment-name>
+kubectl rollout status deploy -n <namespace> <deployment-name>
+```
 
 ### Step 7 — Verify recovery
 
 7A) GPU memory headroom returns
 
-kubectl exec -n \<namespace\> -it \<pod-name\> -- nvidia-smi
+```bash
+kubectl exec -n <namespace> -it <pod-name> -- nvidia-smi
+```
 
 7B) Latency stabilizes and batching improves
 
