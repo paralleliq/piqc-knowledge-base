@@ -15,14 +15,19 @@ The goal is to distinguish KV cache pressure from:
 ## Quick triage (5 minutes)
 
 ### 1) Identify the vLLM pods
-kubectl get pods -n <namespace> -l app=<vllm-label>
-Replace <namespace> and <vllm-label> with your deployment values
-(e.g. namespace=inference, app=vllm).
+
+kubectl get pods -n \<namespace\> -l app=\<app-label-value\>
+
+Example:
+
+kubectl get pods -n inference -l app=vllm
 
 ### 2) Check for restarts or OOMKills
 
-kubectl get pods -n <namespace> -l app=<vllm-label> -o wide
-kubectl describe pod -n <namespace> <pod-name> | egrep -i "oomkilled|reason|exit code|killed|restart"
+kubectl get pods -n \<namespace\> -l app=\<app-label-value\> -o wide
+
+kubectl describe pod/\<pod-name\> -n \<namespace\> | egrep -i "oomkilled|reason|exit code|killed|restart|evict"
+
 Interpretation
 
 OOMKilled or exit code 137 → hard failure (end-stage KV pressure)
@@ -30,13 +35,14 @@ OOMKilled or exit code 137 → hard failure (end-stage KV pressure)
 No OOM but instability → likely throughput collapse (early stage)
 
 Confirm the KV cache signature
+
 KV cache pressure has a distinctive signature:
 
 GPU memory is high while GPU compute utilization is low
 
 ### 3) Inspect GPU memory and utilization
 
-kubectl exec -n <namespace> -it <pod-name> -- nvidia-smi
+kubectl exec -n \<namespace\> -it pod/\<pod-name\> -c \<container-name\> -- nvidia-smi
 
 What to look for
 
@@ -52,7 +58,12 @@ compute cannot be effectively scheduled or batched
 
 ### 4) Inspect vLLM logs for allocation pressure
 
-kubectl logs -n <namespace> <pod-name> --since=2h | grep -i -E "kv|cache|cuda|oom|alloc|out of memory|memory"
+kubectl logs -n \<namespace\> pod/\<pod-name\> -c \<container-name\> --since=2h | grep -i -E "kv|cache|cuda|oom|alloc|out of memory|memory"
+
+If the container restarted, also check previous logs:
+
+kubectl logs -n \<namespace\> pod/\<pod-name\> -c \<container-name\> --previous --since=2h | grep -i -E "kv|cache|cuda|oom|alloc|out of memory|memory"
+
 Common indicators
 
 CUDA out of memory
@@ -64,9 +75,11 @@ KV cache related warnings or errors
 Warnings often appear before a crash.
 
 Identify the trigger
+
 KV cache pressure is usually triggered by request shape, not raw traffic volume.
 
 ### 5) Examine request characteristics (if available)
+
 Check ingress, gateway, or application logs for:
 
 unusually long prompts
@@ -80,13 +93,15 @@ long-lived streaming responses
 KV cache grows roughly with:
 
 concurrency × tokens-in-flight
+
 Long prompts or high concurrency are common triggers.
 
 Check Kubernetes context
 
 ### 6) Review recent Kubernetes events
 
-kubectl get events -n <namespace> --sort-by=.lastTimestamp | tail -n 50
+kubectl get events -n \<namespace\> --sort-by=.lastTimestamp | tail -n 50
+
 Why this matters
 
 node memory pressure
@@ -100,15 +115,32 @@ restarts
 These do not cause KV cache pressure directly, but they can amplify or obscure symptoms.
 
 Validate batching collapse (if metrics are available)
+
 If you expose vLLM or Prometheus metrics:
 
-### 7) Port-forward the metrics endpoint
+### 7) Port-forward the metrics endpoint (if metrics are available)
 
-kubectl port-forward -n <namespace> <pod-name> 9100:9100
+kubectl get pod/\<pod-name\> -n \<namespace\> -o jsonpath='{range .spec.containers[\*]}{.name}{"\t"}{.ports}{"\n"}{end}' ; echo
+
+
+Fallback if ports are not declared in the spec:
+
+kubectl describe pod/\<pod-name\> -n \<namespace\> | grep -i -A2 "Ports"
+
+If you already expose /metrics on the main HTTP port (common), it’s often 8000.
 
 ### 8) Inspect metrics
 
-curl -s localhost:9100/metrics | head
+kubectl port-forward -n \<namespace\> pod/\<pod-name\> \<local-port\>:\<container-port\>
+
+curl -s localhost:\<local-port\>/metrics | head
+
+Example: Using metric endpoint on container port 8000
+
+kubectl port-forward -n \<namespace\> pod/\<pod-name\> 8000:8000
+
+curl -s localhost:8000/metrics | head
+
 
 Signals to look for
 
@@ -124,9 +156,9 @@ Interpretation guide
 Likely KV cache pressure
 Most of the following are true:
 
-GPU memory > 85–90%
+GPU memory \> 85–90%
 
-GPU utilization < ~60%
+GPU utilization \< ~60%
 
 effective batch size collapses
 
