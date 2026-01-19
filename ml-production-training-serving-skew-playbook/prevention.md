@@ -51,11 +51,22 @@ Baselines make regressions obvious and speed root cause.
 
 ---
 
-## 5) Continuous drift detection (optional)
-If you have scanners/advisors:
-- periodically sample “live facts”
-- compare against desired intent
-- alert only when diffs exceed safe thresholds
+## 5) Continuous drift detection (advanced, optional)
 
-This avoids turning PIQC into a full monitoring system while still catching drift early.
+For mature deployments, consider introducing lightweight drift detection to catch
+silent configuration changes before they cause performance regressions or failures.
+
+Pattern:
+
+- periodically sample “live facts” from running workloads  
+- compare against declared intent (images, model revision, dtype, limits)  
+- alert only when diffs exceed safe thresholds  
+
+This is intentionally **not** full monitoring.  
+The goal is early detection of configuration drift without adding operational noise.
+
+### Note:  
+This pattern can be implemented with custom scripts, admission checks, or future
+advisory tooling. It is most valuable in GPU-constrained environments where small
+drifts can lead to OOMs, latency spikes, or irreproducible behavior.
 
