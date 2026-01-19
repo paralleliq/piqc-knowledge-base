@@ -75,14 +75,9 @@ This page shows common real-world GPU utilization patterns and how to interpret 
 - tune max concurrency
 - consider request shaping or smoothing
 
-
-
 ---
 
-### 🔹 Add to `examples.md`
-
-```markdown
-## Example: Low GPU Utilization with MIG Enabled
+## Example 5: Low GPU Utilization with MIG Enabled
 
 **Observed**
 - GPU utilization (slice): 60–70%
