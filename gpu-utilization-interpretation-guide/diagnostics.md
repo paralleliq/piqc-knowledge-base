@@ -30,11 +30,11 @@ kubectl exec \<vllm-pod\> -- nvidia-smi \
 
 Look for:
 
-memory steadily rising
+> memory steadily rising
 
-utilization fluctuating or declining under load
+> utilization fluctuating or declining under load
 
-Runtime-level signals (vLLM)
+> Runtime-level signals (vLLM)
 
 If the metrics endpoint is exposed:
 
@@ -44,15 +44,15 @@ curl -s localhost:8000/metrics | grep -iE "token|batch|latency|running|queue"
 
 Key signals:
 
-effective batch size (p95)
+> effective batch size (p95)
 
-tokens/sec
+> tokens/sec
 
-running sequences
+> running sequences
 
-queue depth
+> queue depth
 
-Request-level signals
+> Request-level signals
 
 From Prometheus (example patterns):
 
@@ -63,19 +63,19 @@ histogram_quantile(
 
 sum(rate(vllm_output_tokens_total[5m]))
 
-3) Correlate, don’t isolate
+## 3) Correlate, don’t isolate
 
 GPU utilization alone is not actionable.
 
 Always ask:
 
-Is GPU memory high or low?
+> Is GPU memory high or low?
 
-Is batching effective?
+> Is batching effective?
 
-Is throughput increasing with traffic?
+> Is throughput increasing with traffic?
 
-Are requests queued?
+> Are requests queued?
 
 The answers determine whether low utilization is a problem — or expected behavior.
 
@@ -91,11 +91,10 @@ GPU 0: A100-SXM4-80GB
   MIG 1g.10gb Device 0
   MIG 1g.10gb Device 1
 
-
 In this case:
 
-utilization and memory are per MIG device
+> utilization and memory are per MIG device
 
-KV cache pressure can occur much earlier
+> KV cache pressure can occur much earlier
 
-batch sizes that work on full GPUs may collapse
+> batch sizes that work on full GPUs may collapse
