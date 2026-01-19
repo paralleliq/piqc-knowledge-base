@@ -25,8 +25,8 @@ kubectl get pods -n \<ns\> -l app=\<app\>
 
 Check image + restarts:
 
-kubectl get pods -n \<ns\> -l app=<app\> \
-  -o custom-columns=NAME:.metadata.name,IMAGE:.spec.containers[0].image,RESTARTS:.status.containerStatuses[*].restartCount
+kubectl get pods -n <ns> -l app=<app> \\
+  -o custom-columns=NAME:.metadata.name,IMAGES:.spec.containers[*].image,RESTARTS:.status.containerStatuses[*].restartCount
 
 
 Describe the workload:
