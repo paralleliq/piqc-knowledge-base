@@ -34,17 +34,17 @@ kubectl describe pod/<pod-name> -n <namespace> | \
   egrep -i "oomkilled|reason|exit code|killed|restart|evict"
 ```
 
-Interpretation
+**Interpretation**
 
-OOMKilled or exit code 137 → hard failure (end-stage KV pressure)
+- `OOMKilled` or exit code `137` → hard failure (end-stage KV cache pressure)  
+- No OOM but instability → likely throughput collapse (early stage)  
 
-No OOM but instability → likely throughput collapse (early stage)
-
-Confirm the KV cache signature
+**Confirm the KV cache signature**
 
 KV cache pressure has a distinctive signature:
 
-GPU memory is high while GPU compute utilization is low
+- GPU memory is high  
+- GPU compute utilization is low
 
 ### 3) Inspect GPU memory and utilization
 
@@ -54,15 +54,13 @@ kubectl exec -n <namespace> -it pod/<pod-name> -c <container-name> -- nvidia-smi
 
 What to look for
 
-GPU memory usage consistently above ~85–90%
-
-GPU utilization below ~60% while traffic is present
+- GPU memory usage consistently above ~85–90%
+- GPU utilization below ~60% while traffic is present
 
 This pattern indicates:
 
-memory is saturated by KV cache
-
-compute cannot be effectively scheduled or batched
+- memory is saturated by KV cache
+- compute cannot be effectively scheduled or batched
 
 ### 4) Inspect vLLM logs for allocation pressure
 
@@ -80,37 +78,32 @@ kubectl logs -n <namespace> pod/<pod-name> -c <container-name> --previous --sinc
 
 Common indicators
 
-CUDA out of memory
+- CUDA out of memory
+- failed to allocate
+- KV cache related warnings or errors
+- Warnings often appear before a crash.
 
-failed to allocate
-
-KV cache related warnings or errors
-
-Warnings often appear before a crash.
-
-Identify the trigger
-
-KV cache pressure is usually triggered by request shape, not raw traffic volume.
+Identify the trigger.  KV cache pressure is usually triggered by request shape, not raw traffic volume.
 
 ### 5) Examine request characteristics (if available)
 
 Check ingress, gateway, or application logs for:
 
-unusually long prompts
-
-large max_tokens values
-
-bursts of concurrent requests
-
-long-lived streaming responses
+- unusually long prompts  
+- large `max_tokens` values  
+- bursts of concurrent requests  
+- long-lived streaming responses  
 
 KV cache grows roughly with:
 
 concurrency × tokens-in-flight
 
-Long prompts or high concurrency are common triggers.
+**Interpretation**
 
-Check Kubernetes context
+Long prompts or high concurrency are common triggers of KV cache pressure.
+
+Proceed to the next step to check Kubernetes context.
+
 
 ### 6) Review recent Kubernetes events
 
@@ -118,21 +111,23 @@ Check Kubernetes context
 kubectl get events -n <namespace> --sort-by=.lastTimestamp | tail -n 50
 ```
 
-Why this matters
+**Interpretation**
 
-node memory pressure
+Look for:
 
-evictions
+- node memory pressure
+- evictions
+- scheduling delays
+- restarts
 
-scheduling delays
+These do not cause KV cache pressure directly, but they can:
 
-restarts
+- amplify memory pressure
+- trigger fragmentation
+- obscure the root cause
+- accelerate failure
 
-These do not cause KV cache pressure directly, but they can amplify or obscure symptoms.
-
-Validate batching collapse (if metrics are available)
-
-If you expose vLLM or Prometheus metrics:
+Proceed to validate batching collapse if metrics are available.
 
 ### 7) Port-forward the metrics endpoint (if metrics are available)
 
@@ -165,36 +160,40 @@ curl -s localhost:8000/metrics | head
 
 Signals to look for
 
-effective batch size (p95) dropping to ~1–2
+- effective batch size (p95) dropping to ~1–2
+- p95 / p99 latency increasing
+- token-per-output-time increasing
+- Batch collapse combined with high GPU memory strongly confirms KV cache pressure.
 
-p95 / p99 latency increasing
+**Interpretation** 
 
-token-per-output-time increasing
+Use the following patterns to classify the failure mode.
 
-Batch collapse combined with high GPU memory strongly confirms KV cache pressure.
+Likely KV cache pressure.  Most of the following are true:
 
-Interpretation guide
-Likely KV cache pressure
-Most of the following are true:
+- GPU memory > 85–90%
+- GPU utilization < ~60%
+- effective batch size collapses
+- p95 / p99 latency rises
+- throughput plateaus or declines
 
-GPU memory \> 85–90%
-
-GPU utilization \< ~60%
-
-effective batch size collapses
-
-p95 / p99 latency rises
+This indicates the system is memory-saturated due to KV cache growth.
 
 Likely compute-bound
-GPU memory moderate
 
-GPU utilization consistently high (>80–90%)
+- GPU memory moderate
+- GPU utilization consistently high (>80–90%)
+- batching remains effective
+- throughput continues to scale with traffic
 
-batching remains effective
+This indicates the workload is compute-limited, not memory-limited.
 
 Likely CPU / networking / tokenization bound
-GPU memory not high
 
-GPU utilization low
+- GPU memory not high
+- GPU utilization low
+- CPU saturation present
+- networking delays or queueing observed
 
-CPU saturation or network delays present
+This indicates the bottleneck is outside the GPU execution path.
+
