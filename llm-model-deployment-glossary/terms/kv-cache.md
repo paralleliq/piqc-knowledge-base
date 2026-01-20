@@ -1,12 +1,15 @@
 ## KV Cache
 
-**Definition**  
+**Definition**
+
 GPU memory used to store attention keys and values for all active sequences during autoregressive decoding.
 
-**Why it exists**  
+**Why it exists**
+
 Recomputing attention over past tokens is prohibitively expensive. KV cache enables fast incremental generation by reusing previously computed attention states.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer
 
 **Key properties**
@@ -23,5 +26,16 @@ Execution layer
 - Long-context requests starve short ones  
 - Often invisible in standard GPU utilization metrics  
 
-**Relat**
+**Related terms**
+
+- Continuous batching  
+- Active sequences  
+- Prefill  
+- Decode  
+- Max model length  
+- Memory fragmentation  
+
+**In practice**
+
+In vLLM, rising KV cache pressure often appears as increasing latency and stalled throughput before sudden pod restarts due to GPU OOM.
 
