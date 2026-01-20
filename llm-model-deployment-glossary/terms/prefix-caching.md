@@ -1,12 +1,15 @@
 ## Prefix Caching
 
-**Definition**  
+**Definition**
+
 A technique that reuses previously computed KV cache for shared input prefixes across multiple requests to avoid redundant computation and memory allocation.
 
-**Why it exists**  
+**Why it exists**
+
 Many LLM workloads share common prefixes (system prompts, templates, retrieved context). Recomputing attention for identical prefixes wastes compute and KV cache capacity.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Memory management / Serving layer
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Memory management / Serving layer
 - RAG  
 - Cache eviction  
 
-**In practice**  
+**In practice**
+
 In chat and RAG systems, prefix caching can reuse system prompts and retrieved context across sessions, significantly reducing prefill latency and KV cache pressure when hit rates are high.
 
