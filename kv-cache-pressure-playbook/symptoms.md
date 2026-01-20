@@ -2,6 +2,18 @@
 
 KV cache pressure typically appears **before any crash or OOM event**. This degraded state can persist for hours or days before GPU OOM occurs.
 
+### Canonical KV Cache Pressure Pattern ###
+
+Most of the following are true:
+
+- GPU memory steadily rising
+- GPU utilization falling
+- effective batch size collapses to ~1–2
+- p95 / p99 latency rises
+- throughput plateaus or declines
+
+This combination is highly indicative of KV cache saturation.
+
 Common indicators include:
 
 ### - GPU memory steadily rising under traffic
@@ -52,9 +64,7 @@ This pattern is highly characteristic of KV cache saturation.
 
 ### - Effective batch size (p95) falling to 1–2
 
-From vLLM runtime metrics (/metrics) if available
-
-Or via Prometheus histogram quantiles if batch-size histograms are exported
+From vLLM runtime metrics (/metrics) if available or via Prometheus histogram quantiles if batch-size histograms are exported
 
 Example PromQL pattern:
 
@@ -66,6 +76,7 @@ histogram_quantile(
 ```
 
 **Interpretation**
+
 A p95 effective batch size near 1–2 indicates batching collapse.
 
 At this point:
@@ -122,18 +133,6 @@ At this stage:
 - additional traffic no longer increases throughput
 - tail latency accelerates
 - OOM becomes likely without intervention
-
-### Canonical KV Cache Pressure Pattern ###
-
-Most of the following are true:
-
-- GPU memory steadily rising
-- GPU utilization falling
-- effective batch size collapses to ~1–2
-- p95 / p99 latency rises
-- throughput plateaus or declines
-
-This combination is highly indicative of KV cache saturation.
 
 
 
