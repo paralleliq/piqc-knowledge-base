@@ -1,12 +1,15 @@
 ## Cold Start
 
-**Definition**  
+**Definition**
+
 The delay incurred when a new model instance must be created and initialized before it can serve requests.
 
-**Why it exists**  
+**Why it exists**
+
 Scaling up requires provisioning resources, starting processes, loading model weights, and initializing GPU memory before traffic can be handled.
 
-**Where in the stack**  
+**Where in the stack**
+
 Control plane / Serving layer / Execution layer
 
 **Key properties**
@@ -31,6 +34,7 @@ Control plane / Serving layer / Execution layer
 - Burst traffic  
 - Scale-up latency  
 
-**In practice**  
+**In practice**
+
 For 70B-class models, cold start time is often dominated by loading tens of gigabytes of weights, making reactive autoscaling ineffective without pre-warmed capacity.
 
