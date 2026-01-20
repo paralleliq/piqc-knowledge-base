@@ -1,12 +1,15 @@
 ## Out of Memory (OOM)
 
-**Definition**  
+**Definition**
+
 A failure condition where a process or GPU cannot allocate additional memory because available memory is exhausted or fragmented.
 
-**Why it exists**  
+**Why it exists**
+
 LLM inference requires large, dynamic memory allocations for weights, activations, and KV cache. When demand exceeds available contiguous memory, allocation fails and the process is terminated.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Hardware layer / Runtime
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Hardware layer / Runtime
 - Cold start  
 - Pod restart  
 
-**In practice**  
+**In practice**
+
 In LLM serving, OOM often occurs when KV cache grows faster than expected, leading to sudden pod restarts even when GPU compute utilization appears low.
 
