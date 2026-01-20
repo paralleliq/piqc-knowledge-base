@@ -1,12 +1,15 @@
 ## LLMD (LLM Daemon)
 
-**Definition**  
+**Definition**
+
 A long-running process responsible for managing model loading, GPU memory, scheduling, and execution of LLM inference requests on a node.
 
-**Why it exists**  
+**Why it exists**
+
 Model execution requires persistent state (weights, KV cache, memory pools) and tight control over GPU resources that cannot be efficiently managed by short-lived processes.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Node-level runtime
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Node-level runtime
 - Serving layer  
 - Runtime  
 
-**In practice**  
+**In practice**
+
 In systems like vLLM, the LLMD manages batching, scheduling, and KV cache while the HTTP server acts as a thin serving layer on top.
 
