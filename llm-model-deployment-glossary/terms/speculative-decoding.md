@@ -1,12 +1,15 @@
 ## Speculative Decoding
 
-**Definition**  
+**Definition**
+
 A decoding technique where a smaller “draft” model proposes multiple tokens ahead, and a larger “target” model verifies or corrects them to accelerate generation.
 
-**Why it exists**  
+**Why it exists**
+
 Autoregressive decoding is inherently sequential and latency-bound. Speculative decoding reduces the number of expensive forward passes of large models while preserving output quality.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Decoding strategy
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Decoding strategy
 - Throughput optimization  
 - Draft model  
 
-**In practice**  
+**In practice**
+
 In high-throughput LLM serving, speculative decoding can significantly increase tokens-per-second when a well-matched draft model is used, but gains diminish when verification overhead dominates.
 
