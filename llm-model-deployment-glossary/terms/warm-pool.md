@@ -1,12 +1,15 @@
 ## Warm Pool
 
-**Definition**  
+**Definition**
+
 A set of pre-provisioned and partially initialized instances kept ready to rapidly serve traffic or host new model replicas without incurring full cold start latency.
 
-**Why it exists**  
+**Why it exists**
+
 Cold starts for large models are expensive and slow. Warm pools provide immediate capacity to absorb traffic bursts and scale events while avoiding model load and GPU initialization delays.
 
-**Where in the stack**  
+**Where in the stack**
+
 Control plane / Orchestration layer / Provisioning layer
 
 **Key properties**
@@ -31,6 +34,7 @@ Control plane / Orchestration layer / Provisioning layer
 - Scale-up latency  
 - Provisioning latency  
 
-**In practice**  
+**In practice**
+
 In GPU-based LLM serving, warm pools are often required to meet latency SLOs because loading large models on demand takes tens of seconds to minutes, making reactive autoscaling ineffective.
 
