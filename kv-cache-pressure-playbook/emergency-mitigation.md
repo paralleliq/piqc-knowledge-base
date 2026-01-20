@@ -90,9 +90,8 @@ If still unstable, go lower:
 
 Why it helps:
 
-leaves room for allocator overhead and fragmentation
-
-prevents hard allocation failures
+- leaves room for allocator overhead and fragmentation
+- prevents hard allocation failures
 
 ### Step 5 — Apply changes safely (Kubernetes)
 
@@ -104,9 +103,7 @@ Edit the deployment (recommended):
 kubectl edit deploy -n <namespace> <deployment-name>
 ```
 
-Or update your Helm values / manifest and redeploy.
-
-Then watch rollout:
+Or update your Helm values / manifest and redeploy.  Then watch rollout:
 
 ```bash
 kubectl rollout status deploy -n <namespace> <deployment-name>
@@ -132,16 +129,11 @@ kubectl exec -n <namespace> -it <pod-name> -- nvidia-smi
 
 7B) Latency stabilizes and batching improves
 
-p95/p99 latency stops climbing
+- p95/p99 latency stops climbing
+- effective batch size increases
+- fewer timeouts / 503s
 
-effective batch size increases
+If this doesn’t and GPU memory is not high (\>85–90%) but performance is poor, this may not be KV cache pressure. Go back to:
 
-fewer timeouts / 503s
-
-If this doesn’t work
-If GPU memory is not high (\>85–90%) but performance is poor, this may not be KV cache pressure.
-Go back to:
-
-diagnostics.md to confirm the signature
-
-check CPU saturation / tokenization / networking issues
+- diagnostics.md to confirm the signature
+- check CPU saturation / tokenization / networking issues
