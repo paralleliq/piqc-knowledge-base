@@ -83,38 +83,61 @@ This checklist covers:
 Use the sections below to explore the full PIQC knowledge base.
 ### Core GenAI Model Deployment Checklist  
 The top-level, model-agnostic checklist for validating deployment readiness.  
+
 📂 [`CHECKLIST.md`](./CHECKLIST.md)
 
 ### AI Infrastructure Best Practices & Playbooks
 Production-oriented guidance for designing, deploying, and operating **efficient, reliable, and cost-optimized AI inference infrastructure**, with a focus on runtime behavior and system-level tradeoffs.  
+
 📂 [`ai-infrastructure-best-practices-and-playbooks/`](./ai-infrastructure-best-practices-and-playbooks/README.md)
 
 ### AI Infrastructure Audit & Readiness Checklist (42-Point Review)
-A structured, vendor-neutral framework for evaluating **compute health, networking, storage, reliability, scalability, and governance** across AI/ML infrastructure environments.  
+A structured, vendor-neutral framework for evaluating **compute health, networking, storage, reliability, scalability, and governance** across AI/ML infrastructure environments. 
+
 📂 [`ai-infrastructure-audit-and-readiness-checklist/`](./ai-infrastructure-audit-and-readiness-checklist/README.md)
 
 ### AI Governance & Compliance Checklist
 A pragmatic compliance and governance framework covering **AI accountability, data privacy, transparency, fairness, security, and regulatory readiness**, including domain-specific extensions.  
+
 📂 [`ai-governance-and-compliance-checklist/`](./ai-governance-and-compliance-checklist/README.md)
 
 ### AI Cluster Bring-Up Checklist  
 A structured, end-to-end framework for bringing up a **bare-metal AI GPU cluster**, covering **hardware, networking, orchestration, runtime, observability, security, and operational readiness**.  
+
 📂 [`ai-cluster-bringup-checklist/`](./ai-cluster-bringup-checklist/README.md)
 
 ### Model Deployment Quality Checklist
 Conceptual diagnostic categories used to evaluate the **correctness, performance, scalability, and cost efficiency** of deployed AI/LLM model services.  
 This checklist informs the future direction of **PIQC Advisor** diagnostics.  
+
 📂 [`ai-model-deployment-quality-checklist/`](./ai-model-deployment-quality-checklist/README.md)
 
 
 ### LLM Inference Production Readiness (Kubernetes + vLLM)
-A **Day-0 → Day-2, cross-functional readiness framework** for deploying LLMs using **vLLM on Kubernetes**, aligned across ML Engineering, MLOps, SRE, Platform, and Security teams.  
+A **Day-0 → Day-2, cross-functional readiness framework** for deploying LLMs using **vLLM on Kubernetes**, aligned across ML Engineering, MLOps, SRE, Platform, and Security teams. 
+
 📂 [`llm-inference-production-readiness-checklist/`](./llm-inference-production-readiness-checklist/README.md)
 
 
 ### vLLM Runtime Metrics & Observability Guide
 A public, vendor-neutral catalog of **static and dynamic runtime signals** required to analyze GPU efficiency, batching behavior, latency, autoscaling correctness, and runtime drift in vLLM-based inference systems.  
+
 📂 [`vllm-runtime-metrics-and-observability-guide/`](./vllm-runtime-metrics-and-observability-guide/README.md)
+
+### GPU Utilization Interpretation Guide
+A public, vendor-neutral catalog to identify GPU under-utilization caused by **memory pressure, mis-batching, or scheduling errors**, and recover lost throughput and cost efficiency.
+
+📂 [`gpu-utilization-interpretation-guide/`](./gpu-utilization-interpretation-guide/README.md)
+
+### KV Cache Pressure Playbook
+A public, vendor-neutral catalog to detect, diagnose, and mitigate KV cache pressure that silently causes **batching collapse, rising latency, and hidden GPU memory exhaustion** in vLLM.
+
+📂 [`kv-cache-pressure-playbook/`](./kv-cache-pressure-playbook/README.md)
+
+### ML Production Training-Serving Skew Playbook
+A public, vendor-neutral catalog to detect training–serving skew and **configuration drift** that silently degrade model accuracy, latency, and production reliability. 
+
+📂 [`ml-production-training-serving-playbook/`](./ml-production-training-serving-playbook/README.md)
 
 ---
 
