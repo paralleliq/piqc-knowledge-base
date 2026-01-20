@@ -25,6 +25,10 @@ Example:
 ```bash
 kubectl get pods -n inference -l app=vllm
 ```
+or
+```bash
+kubectl get pods -n inference -o wide | grep vllm
+```
 
 ### 2) Check for restarts or OOMKills
 
@@ -154,8 +158,8 @@ curl -s localhost:<local-port>/metrics | head
 Example: Using metric endpoint on container port 8000
 
 ```bash
-kubectl port-forward -n <namespace> pod/<pod-name> 8000:8000
-curl -s localhost:8000/metrics | head
+kubectl port-forward -n inference pod/vllm-7f9c9c9b6f-abcde 8000:8000
+curl -s http://localhost:8000/metrics | head
 ```
 
 Signals to look for
