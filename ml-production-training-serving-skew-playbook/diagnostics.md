@@ -152,13 +152,10 @@ kubectl describe node/<node> | grep -iE "gpu|nvidia|allocatable|capacity" -n
 
 #### What to confirm
 
-request timeouts vs max generation
-
-streaming enabled/disabled (changes concurrency and tail latency)
-
-retries amplifying load
-
-request size limits / max body size
+- request timeouts vs max generation
+- streaming enabled/disabled (changes concurrency and tail latency)
+- retries amplifying load
+- request size limits / max body size
 
 #### Commands
 
@@ -197,16 +194,11 @@ kubectl get deploy/<name> -n <ns> -o jsonpath='{.spec.template.spec.affinity}{"\
 
 When you file an issue (internal or OSS), capture:
 
-workload identity: namespace, deployment name, pod list
-
-image tag + digest
-
-container args + env (redact secrets)
-
-GPU type + driver version
-
-key runtime metrics snapshots (tokens/sec, latency p99, GPU util/mem)
-
-diff vs last-good (or the date/time of last-good)
+- workload identity: namespace, deployment name, pod list
+- image tag + digest
+- container args + env (redact secrets)
+- GPU type + driver version
+- key runtime metrics snapshots (tokens/sec, latency p99, GPU util/mem)
+- diff vs last-good (or the date/time of last-good)
 
 This makes skew debuggable.
