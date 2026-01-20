@@ -1,12 +1,15 @@
 ## Serverless Architecture
 
-**Definition**  
+**Definition**
+
 An execution model where compute resources are provisioned, scaled, and managed automatically by the platform, and workloads run in ephemeral instances without user-managed servers.
 
-**Why it exists**  
+**Why it exists**
+
 Workload demand is highly variable. Serverless abstracts infrastructure management and enables fine-grained scaling and pay-per-use execution.
 
-**Where in the stack**  
+**Where in the stack**
+
 Control plane / Orchestration layer / Serving layer
 
 **Key properties**
@@ -31,6 +34,7 @@ Control plane / Orchestration layer / Serving layer
 - Stateless serving  
 - Scale-to-zero  
 
-**In practice**  
+**In practice**
+
 For LLM serving, pure serverless architectures struggle due to long model load times and large GPU memory requirements, making pre-warmed capacity and hybrid models more effective than true scale-to-zero designs.
 
