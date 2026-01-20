@@ -1,12 +1,15 @@
 ## TPOT (Time Per Output Token)
 
-**Definition**  
+**Definition**
+
 The average time required to generate a single output token during decoding, typically measured in milliseconds per token.
 
-**Why it exists**  
+**Why it exists**
+
 End-to-end latency is dominated by token generation speed. TPOT provides a fine-grained measure of decoding efficiency independent of prompt length or total response size.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Decoding performance
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Decoding performance
 - Speculative decoding  
 - Scheduler  
 
-**In practice**  
+**In practice**
+
 In LLM serving, rising TPOT is often the first signal of memory pressure, scheduler contention, or communication bottlenecks before visible throughput collapse or OOM events.
 
