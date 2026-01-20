@@ -1,12 +1,15 @@
 ## TTFT (Time To First Token)
 
-**Definition**  
+**Definition**
+
 The elapsed time from when a request is received until the first output token is generated and returned to the client.
 
-**Why it exists**  
+**Why it exists**
+
 Users perceive responsiveness based on how quickly the model begins responding. TTFT captures the combined cost of queueing, scheduling, prefill, and model readiness.
 
-**Where in the stack**  
+**Where in the stack**
+
 Serving layer / Execution layer / End-to-end latency
 
 **Key properties**
@@ -31,6 +34,7 @@ Serving layer / Execution layer / End-to-end latency
 - Tail latency  
 - TTBT (Time To Begin Token)  
 
-**In practice**  
+**In practice**
+
 In chat systems, high TTFT is often caused by long prompts, batch formation delays, or cold starts, making the system feel unresponsive even when throughput is high.
 
