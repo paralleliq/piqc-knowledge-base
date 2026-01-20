@@ -1,12 +1,15 @@
 ## Pipeline Parallelism
 
-**Definition**  
+**Definition**
+
 A form of model parallelism where different layers or stages of a model are placed on different devices and executed sequentially as data flows through the pipeline.
 
-**Why it exists**  
+**Why it exists**
+
 Very large models cannot fit on a single GPU. Pipeline parallelism enables execution by splitting the model across multiple devices while keeping each layer fully resident on one device.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Distributed execution
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Distributed execution
 - Pipeline bubble  
 - Inter-stage communication  
 
-**In practice**  
+**In practice**
+
 In large-model deployments, pipeline parallelism is often combined with tensor parallelism to fit 70B+ models across multiple GPUs, at the cost of higher latency and more complex scheduling.
 
