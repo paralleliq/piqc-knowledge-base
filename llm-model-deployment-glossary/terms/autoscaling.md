@@ -1,12 +1,15 @@
 ## Autoscaling
 
-**Definition**  
+**Definition**
+
 Automatically adjusting the number or size of running model instances based on workload demand or system signals.
 
-**Why it exists**  
+**Why it exists**
+
 Workloads are variable. Autoscaling prevents under-provisioning (high latency, dropped requests) and over-provisioning (idle GPUs, wasted cost).
 
-**Where in the stack**  
+**Where in the stack**
+
 Control plane / Orchestration layer
 
 **Key properties**
@@ -30,6 +33,7 @@ Control plane / Orchestration layer
 - Predictive scaling  
 - Cold start  
 
-**In practice**  
+**In practice**
+
 In LLM serving, reactive autoscaling often arrives too late; by the time latency rises, GPU memory is already saturated and new replicas cannot be placed.
 
