@@ -1,43 +1,31 @@
 
----
-
-## `_meta/changelog.md`
-
-```markdown
-# Glossary Changelog
-
-This file tracks all notable changes to the glossary.
-
-Use this to record:
-- newly added terms  
-- modified definitions  
-- taxonomy changes  
-- deprecated or renamed entries  
-
----
-
 ## 2026-01-20
 
 ### Added
-- Autoscaling  
-- Batching  
-- Cold Start  
-- KV Cache  
-- Paged Attention  
-- Prefix Caching  
-- Scheduler  
-- Serverless Architecture  
-- Speculative Decoding  
-- Tensor Parallelism  
-- TPOT (Time Per Output Token)  
-- TTFT (Time To First Token)  
-- Warm Pool  
+- Initial glossary structure and metadata:
+  - `_meta/taxonomy.md`
+  - `_meta/style-guide.md`
+  - `_meta/changelog.md`
+- Top-level `README.md` describing scope, philosophy, and contribution model
 
-### Changed
-- Initial glossary structure and style established  
+- Core execution and control-plane terms:
+  - Autoscaling  
+  - Batching  
+  - Cold Start  
+  - KV Cache  
+  - OOM (Out of Memory)  
+  - Paged Attention  
+  - Prefix Caching  
+  - Scheduler  
+  - Serverless Architecture  
+  - Speculative Decoding  
+  - Tensor Parallelism  
+  - TPOT (Time Per Output Token)  
+  - TTFT (Time To First Token)  
+  - Warm Pool  
 
 ### Taxonomy
-- Added primary categories:
+- Established primary categories:
   - Execution  
   - Serving  
   - Control Plane / Orchestration  
@@ -47,32 +35,9 @@ Use this to record:
   - Performance & Metrics  
   - Reliability & Failure Modes  
 
----
+- Established standard entry template and style rules
 
-## Change Log Format
-
-For each entry:
-- date or version header  
-- sections:
-  - Added  
-  - Changed  
-  - Deprecated  
-  - Taxonomy  
-
-Optional:
-- link to commit or PR  
-- author initials  
-
----
-
-## Deprecation Policy
-
-- Deprecated terms remain for reference  
-- Must include pointer to replacement term  
-- Removal only after at least one major version  
-
-Example:
-
-### Deprecated
-- `Time To Begin Token` → replaced by `TTFT`
+### Notes
+- This release establishes the initial semantic baseline for LLM deployment and execution terminology.
+- All future changes will be tracked relative to this version.
 
