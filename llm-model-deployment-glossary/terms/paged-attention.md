@@ -1,12 +1,15 @@
 ## Paged Attention
 
-**Definition**  
+**Definition**
+
 A memory management technique that stores KV cache in fixed-size blocks (pages) and dynamically maps them to active sequences, instead of allocating contiguous memory per request.
 
-**Why it exists**  
+**Why it exists**
+
 Traditional contiguous KV cache allocation leads to severe memory fragmentation and wasted space. Paged attention improves memory utilization and enables higher concurrency and longer context lengths.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Memory management
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Memory management
 - Block allocator  
 - vLLM  
 
-**In practice**  
+**In practice**
+
 In vLLM, paged attention allows thousands of concurrent sequences by mapping KV cache blocks dynamically, dramatically reducing fragmentation and increasing effective GPU memory utilization.
 
