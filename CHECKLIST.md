@@ -85,6 +85,9 @@
 - [Model Deployment Quality Checklist](../ai-model-deployment-quality-checklist/)  
 - [LLM Inference Production Readiness](../llm-inference-production-readiness-checklist/)  
 - [vLLM Runtime Metrics Guide](../vllm-runtime-metrics-and-observability-guide/)
+- [KV Cache Pressure Playbook](../kv-cachepressure-playbook/)
+- [ML Production Training Serving Skew Playbook](../ml-production-training-serving-skew-playbook/)
+- [GPU Utilization Interpretation Guide](../gpu-utilization-interpretation-guide/)
 
 ---
 
