@@ -1,12 +1,15 @@
 ## Batching
 
-**Definition**  
+**Definition**
+
 Combining multiple inference requests into a single execution step to improve GPU utilization and throughput.
 
-**Why it exists**  
+**Why it exists**
+
 Individual LLM requests are too small to efficiently occupy modern GPUs. Batching amortizes kernel launches and memory access across many requests.
 
-**Where in the stack**  
+**Where in the stack**
+
 Execution layer / Serving layer
 
 **Key properties**
@@ -31,6 +34,7 @@ Execution layer / Serving layer
 - Queue depth  
 - Throughput vs latency  
 
-**In practice**  
+**In practice**
+
 In vLLM and TGI, continuous batching improves throughput but can rapidly increase KV cache pressure if admission is not controlled.
 
