@@ -1,4 +1,4 @@
-## LLMD (LLM Daemon)
+## llm-d (LLM Daemon)
 
 **Definition**
 
@@ -36,5 +36,5 @@ Execution layer / Node-level runtime
 
 **In practice**
 
-In systems like vLLM, the LLMD manages batching, scheduling, and KV cache while the HTTP server acts as a thin serving layer on top.
+In systems like vLLM, the llm-d manages batching, scheduling, and KV cache while the HTTP server acts as a thin serving layer on top.
 
