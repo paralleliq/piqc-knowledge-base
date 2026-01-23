@@ -171,7 +171,7 @@ This is why GPU clouds feel unreliable and unfair under load.
 
 ## Diagram
 
-![GPU Platform Control Plane Swim Lane](swimlane-control-plane.png)
+![GPU Platform Control Plane Swim Lane](bpm-gpuaas.png)
 
 ---
 
