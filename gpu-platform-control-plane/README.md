@@ -169,7 +169,7 @@ This is why GPU clouds feel unreliable and unfair under load.
 
 ---
 
-## Diagram
+## Control Plane: Execution, Observability, and Business Rules
 
 ![GPU Platform Control Plane Swim Lane](bpm-gpuaas.png)
 
