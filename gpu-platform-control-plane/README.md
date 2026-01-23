@@ -7,9 +7,7 @@
 
 Modern GPU platforms treat Kubernetes or Slurm as the “control plane.”
 
-This is a category error.
-
-What’s missing is a **business-rules control plane** that owns:
+This is a category error.  What’s missing is a **business-rules control plane** that owns:
 
 - tenant identity and lifecycle  
 - resource entitlements and envelopes  
@@ -112,8 +110,7 @@ This lane defines the GPU platform operating system.
 - Graceful shutdown  
 - SLA credit issuance  
 
-This lane is the control plane.  
-Everything else is execution machinery.
+This lane is the control plane.  Everything else is execution machinery.
 
 ---
 
@@ -126,8 +123,7 @@ Everything else is execution machinery.
 - Restart failed jobs  
 - Schedule within pre-computed constraints  
 
-The orchestrator executes decisions already made upstream.  
-It does not define product semantics.
+The orchestrator executes decisions already made upstream.  It does not define product semantics.
 
 ---
 
@@ -210,9 +206,7 @@ This repository is not:
 
 This content is published as vendor-neutral architecture guidance.
 
-Use it freely.  
-Build on it.  
-Argue with it.
+Use it freely.  Build on it.  Argue with it.
 
 ---
 
