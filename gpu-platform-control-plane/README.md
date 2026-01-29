@@ -172,9 +172,18 @@ This is why GPU clouds feel unreliable and unfair under load.
 ## Control Plane: Execution, Observability, and Business Rules
 
 ![GPU Platform Control Plane Swim Lane](gpuaasbpm.jpg)
+
+## Control Plane Request Capacity Workflow
+
 ![GPU Platform Control Plane Request Capacity](RequestCapacityPIQC.png)
-![GPU Platform Control Plane Request Capacity BPM](DeployModelPIQC.png)
-![GPU Platform Control Plane Deploy Model](RequestCapacityBPM.png)
+
+## Control Plane - Deploy Model Workflow
+
+![GPU Platform Control Plane Deploy Model Workflow](DeployModelPIQC.png)
+
+## Control Plane - Request Capacity Workflow BPM
+
+![GPU Platform Control Plane Request Capacity BPM](RequestCapacityBPM.png)
 
 ---
 
