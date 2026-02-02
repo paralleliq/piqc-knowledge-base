@@ -139,6 +139,11 @@ A public, vendor-neutral catalog to detect training–serving skew and **configu
 
 📂 [`ml-production-training-serving-playbook/`](./ml-production-training-serving-playbook/README.md)
 
+### PIQC Control Plane
+PIQC Control Plane is the policy and workflow layer for GPUaaS and AI clusters.  It encodes governance, business rules, and lifecycle semantics — not just scheduling.  This repo contains specs, workflows, and reference designs for admission, placement, scaling, and enforcement.
+
+📂 [`piqc-control-plane/`](./piqc-control-plane/README.md)
+
 ---
 
 ## 🧭 Purpose & Philosophy
