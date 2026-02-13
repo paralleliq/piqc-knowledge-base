@@ -1,4 +1,3 @@
-```markdown
 # Execution Layer
 
 ## Definition
