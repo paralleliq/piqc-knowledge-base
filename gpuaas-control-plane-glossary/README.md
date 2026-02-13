@@ -1,5 +1,13 @@
 # GPUaaS Control Plane Glossary
 
+This glossary defines the key concepts, patterns, and components involved in operating a GPU-as-a-Service (GPUaaS) platform and its control plane.
+
+It focuses on the **governance, orchestration, and execution layers** that manage capacity, fairness, provisioning, and workload admission across shared GPU clusters. These terms describe how modern platforms translate user intent into reliable, cost-efficient, and scalable infrastructure behavior.
+
+Use this glossary as a reference when designing or discussing control plane architecture, workflows, and policies.
+
+---
+
 ## 🧠 Core Control Plane Concepts
 - [Control Plane](terms/control-plane.md)
 - [Governance Layer](terms/governance-layer.md)
