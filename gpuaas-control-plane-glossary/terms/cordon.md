@@ -1,95 +1,110 @@
-# Cluster Autoscaler
+# Cordon
 
 ## Definition
-Cluster Autoscaler is a Kubernetes component that automatically adjusts the number of nodes in a cluster based on pending workloads and overall utilization.
+Cordon is the action of marking a Kubernetes node as unschedulable so that no new pods can be placed on it.
 
-It adds nodes when pods cannot be scheduled and removes nodes when they are underutilized.
+Existing workloads continue running, but the scheduler will not assign new workloads to that node.
 
-It is one of the earliest and most widely used node autoscaling solutions in Kubernetes.
+In GPUaaS platforms, cordoning is often the first step before maintenance, consolidation, or scale-down operations.
+
+It answers:
+“How do we safely stop placing new work on this node?”
 
 ## Why it matters in GPUaaS
-GPU workloads frequently exceed available capacity:
+GPU workloads are:
 
-- training jobs request many GPUs at once
-- inference traffic spikes
-- tenants compete for limited hardware
+- long-running (training jobs)
+- latency-sensitive (inference)
+- expensive to interrupt
 
-Without autoscaling:
-- jobs remain pending
-- queues grow
-- GPUs sit idle during low demand
-- costs increase during over-provisioning
+Immediately terminating a node can:
 
-Cluster Autoscaler helps match supply to demand automatically, improving both utilization and cost efficiency.
+- waste GPU hours
+- kill distributed jobs
+- violate SLAs
+- create unnecessary retries
+
+Cordoning allows the platform to freeze scheduling to a node while existing workloads either finish or are drained in a controlled way.
+
+It is a safety mechanism.
 
 ## Responsibilities
-Cluster Autoscaler typically:
+Cordoning helps the platform:
 
-- detect unschedulable pods
-- request new nodes from the cloud provider
-- scale node groups up or down
-- remove idle nodes safely
-- respect disruption budgets
-- maintain minimum/maximum node limits
+- prepare nodes for upgrades
+- isolate unhealthy nodes
+- consolidate workloads
+- safely scale down capacity
+- handle spot interruption notices
+- reduce scheduling onto problematic hardware
 
-It manages node count, not workload policy.
+It prevents new workload placement without disruption.
 
 ## Typical behavior
-1. scheduler cannot place pods (insufficient resources)
-2. pods remain pending
-3. Cluster Autoscaler detects demand
-4. increases node group size
-5. nodes join cluster
-6. pods schedule
-7. later, idle nodes are removed
 
-This loop runs continuously.
+When a node is cordoned:
 
-## Key characteristics
-- works with predefined node groups
-- scales entire groups uniformly
-- simpler configuration
-- reactive by design
-- widely supported across cloud providers
+1. node is marked unschedulable
+2. scheduler ignores it for new pods
+3. existing pods continue running
+4. operator may later drain the node
 
-It focuses on capacity availability rather than optimal instance selection.
+Cordoning alone does not evict workloads.
 
 ## Example
-A job requires 8 GPUs, but only 4 are available.
 
-Cluster Autoscaler:
-- increases GPU node group size by 4
-- nodes provision
-- job schedules
+Cluster has 8 GPUs on a node.
 
-After completion:
-- unused nodes scale down
+Control plane decides to scale down:
 
-## Limitations
-Compared to newer autoscalers:
+- cordon node
+- wait for jobs to finish (or drain them)
+- terminate node
 
-- reactive only (provisions after pods are pending)
-- limited instance flexibility
-- scales groups, not individual nodes
-- less efficient for heterogeneous GPU fleets
+This avoids placing new work that would immediately need eviction.
 
-These limitations can cause slower startup and higher costs in complex GPU environments.
+## Cordon vs Drain
 
-## Cluster Autoscaler vs other autoscalers
-- **Cluster Autoscaler** → group-based, simpler, reactive
-- **Karpenter** → more dynamic, instance-aware, flexible provisioning
+- **Cordon** → stop new placements
+- **Drain** → evict existing pods
 
-Many modern GPU platforms prefer more adaptive autoscalers for efficiency.
+Typical safe workflow:
+
+cordon → drain → upgrade/terminate
+
+Cordoning is a non-disruptive action; draining is disruptive.
+
+## Common use cases
+
+- rolling upgrades
+- driver updates
+- GPU replacement
+- consolidation workflows
+- spot interruption handling
+- incident isolation
+
+Cordoning is often triggered automatically by autoscalers or control-plane workflows.
+
+## Role in the control plane
+
+The control plane may:
+
+- cordon underutilized nodes before consolidation
+- cordon nodes receiving interruption notices
+- cordon unhealthy hardware
+- coordinate drain timing based on tier policies
+- protect premium workloads during maintenance
+
+It is part of safe actuation.
 
 ## Mental model
-Cluster Autoscaler is the “basic fleet manager” that grows or shrinks node groups when the cluster runs out of space.
 
-It ensures capacity exists but does not optimize how.
+Cordon is the “closed sign” on a node — no new work enters, but current work can finish safely.
 
 ## Related terms
-- [Autoscaler](./autoscaler.md)
+
+- [Drain](./drain.md)
+- [Scale Down](./scale-down.md)
+- [Consolidation](./consolidation.md)
+- [Spot Interruption](./spot-interruption.md)
 - [Provisioning](./provisioning.md)
-- [Reactive Scaling](./reactive-scaling.md)
-- [Karpenter](./karpenter.md)
-- [NodePool](./nodepool.md)
-- [Utilization](./utilization.md)
