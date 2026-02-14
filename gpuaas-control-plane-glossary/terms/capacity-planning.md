@@ -1,88 +1,128 @@
-# Capacity Buffer
+# Capacity Planning
 
 ## Definition
-A capacity buffer is a reserved portion of compute resources kept intentionally free so new or high-priority workloads can start immediately without waiting for provisioning.
+Capacity planning is the process of forecasting, sizing, and allocating compute resources so the platform can meet expected workload demand, performance targets, and SLAs at an acceptable cost.
 
-It provides spare headroom between current utilization and total capacity.
+In GPUaaS platforms, capacity planning answers:
+“How many GPUs — and of which type — should we have available?”
 
-In GPUaaS, a capacity buffer acts as shock absorption for sudden demand spikes.
+It is a strategic, longer-term discipline rather than a real-time scaling mechanism.
 
 ## Why it matters in GPUaaS
-GPU provisioning is slow and workloads often arrive unpredictably:
+GPU infrastructure has unique constraints:
 
-- training jobs request many GPUs at once
-- inference traffic spikes
-- SLA-bound workloads need fast startup
+- hardware procurement lead times
+- limited regional availability
+- high capital or rental cost
+- provisioning latency
+- heterogeneous GPU types
 
-If the cluster runs at 100% utilization:
-- every new workload waits
-- cold starts increase
+If capacity is under-planned:
 - queues grow
 - SLAs are missed
+- premium customers churn
 
-A capacity buffer prevents this by ensuring some resources are always ready.
+If over-planned:
+- GPUs sit idle
+- costs increase
+- margins shrink
+
+Capacity planning balances reliability and cost.
 
 ## Responsibilities
-Capacity buffers help the platform:
+Capacity planning typically includes:
 
-- reduce startup latency
-- absorb burst traffic
-- protect SLA tiers
-- avoid immediate reactive scaling
-- smooth out provisioning delays
-- reduce partial starts and idle ranks
+- forecasting demand growth
+- analyzing historical utilization
+- sizing GPU pools by tier
+- defining capacity buffers
+- determining reservation levels
+- planning regional distribution
+- budgeting infrastructure spend
 
-They improve responsiveness at the cost of some idle capacity.
+It informs both governance policy and provisioning strategy.
 
-## Typical behavior
-Instead of:
-- 100 GPUs total
-- 100 GPUs allocated
+## Inputs to planning
 
-Platforms maintain:
-- 100 GPUs total
-- 85–90 allocated
-- 10–15 kept free
+Common signals include:
 
-When demand spikes:
-- workloads use the buffer immediately
-- autoscaler backfills capacity in the background
+- historical GPU utilization
+- queue depth trends
+- workload size distribution
+- tenant growth rates
+- SLA commitments
+- seasonality patterns
+- spot vs on-demand mix
+- provisioning latency
+- cost targets
 
-This decouples startup from provisioning time.
+These help predict future requirements.
+
+## Typical workflow
+
+1. analyze historical metrics
+2. forecast near-term and long-term demand
+3. define required GPU count and mix
+4. allocate capacity by tier or pool
+5. set buffer targets
+6. provision or procure hardware
+7. continuously refine forecasts
+
+Planning is iterative and ongoing.
 
 ## Example
-Cluster keeps 5 H100 GPUs as a buffer.
 
-A production job requiring 4 GPUs arrives:
-- starts instantly
-- no waiting for provisioning
+Historical data shows:
 
-Autoscaler then provisions replacements to restore the buffer.
+- weekday peak demand: 85 GPUs
+- average demand: 60 GPUs
+- premium tier requires guaranteed 30 GPUs
 
-## Buffer vs warm pool
-These concepts are related:
+Plan might be:
 
-- **Capacity buffer** → logical reserved headroom
-- **Warm pool** → physically pre-provisioned idle nodes
+- total fleet: 100 GPUs
+- 30 reserved for premium
+- 10 buffer
+- 60 shared pool
 
-Warm pools are one way to implement a buffer.
+This supports reliability while controlling cost.
 
-## Trade-offs
-Capacity buffers:
-- improve latency and reliability
-- reduce cold starts
+## Capacity planning vs autoscaling
 
-But:
-- increase short-term cost due to idle capacity
+- **Capacity planning** → strategic sizing (weeks/months)
+- **Autoscaling** → tactical adjustment (minutes/hours)
 
-Platforms balance buffer size based on tier or SLA.
+Planning sets the baseline fleet size.  
+Autoscaling handles short-term fluctuations.
+
+Both are necessary.
+
+## Relationship to other concepts
+
+Capacity planning influences:
+
+- [Capacity Buffer](./capacity-buffer.md)
+- [Reservation](./reservation.md)
+- [Quota](./quota.md)
+- [Cost Optimization](./cost-optimization.md)
+- [Provisioning](./provisioning.md)
+- [Utilization](./utilization.md)
+
+It connects business forecasting with infrastructure design.
+
+## Role in the control plane
+
+The control plane may:
+
+- track long-term trends
+- recommend pool resizing
+- adjust reservations
+- rebalance GPU types
+- inform procurement decisions
+- integrate with billing forecasts
+
+While autoscalers react to real-time demand, capacity planning shapes the structural limits of the system.
 
 ## Mental model
-A capacity buffer is “breathing room” for the cluster — spare GPUs kept ready so the system can react instantly to new demand.
 
-## Related terms
-- [Warm Pool](./warm-pool.md)
-- [Provisioning](./provisioning.md)
-- [Proactive Scaling](./proactive-scaling.md)
-- [Cold Start](./cold-start.md)
-- [Utilization](./utilization.md)
+Capacity planning is the “fleet sizing strategy” — deciding how big the ship should be before it sails, not just adjusting sails mid-journey.
