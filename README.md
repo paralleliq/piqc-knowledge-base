@@ -139,6 +139,15 @@ A public, vendor-neutral catalog to detect training–serving skew and **configu
 
 📂 [`ml-production-training-serving-playbook/`](./ml-production-training-serving-playbook/README.md)
 
+### GPUaaS Control Plane Glossary
+A glossary of terms used when managing a cluster of GPUs.   
+
+📂 [`gpuaas-control-plane-glossary/`](./gpuaas-control-plane-glossary/README.md)
+
+### PIQC Control Plane
+ParallelIQ control plane high level view   
+
+📂 [`piqc-control-plane/`](./piqc-control-plane/README.md)
 ---
 
 ## 🧭 Purpose & Philosophy
