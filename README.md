@@ -148,6 +148,7 @@ A glossary of terms used when managing a cluster of GPUs.
 ParallelIQ control plane high level view   
 
 📂 [`piqc-control-plane/`](./piqc-control-plane/README.md)
+
 ---
 
 ## 🧭 Purpose & Philosophy
