@@ -31,7 +31,7 @@ Commands:
 ```bash
 nvidia-smi -q -d ECC
 nvidia-smi --query-gpu=ecc.errors.corrected.volatile.total,ecc.errors.uncorrected.volatile.total --format=csv
-
+```
 
 Actions:
 
