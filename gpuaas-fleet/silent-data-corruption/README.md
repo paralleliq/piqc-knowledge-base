@@ -106,10 +106,7 @@ An effective SDC mitigation strategy includes:
 | Observing SLA anomalies | Thermal and power baselining |
 | Replay validation | Structured retirement policy |
 
-Detection reduces impact.  
-Prevention reduces probability.
-
-Both are required in GPUaaS environments.
+Detection reduces impact.  Prevention reduces probability.  Both are required in GPUaaS environments.
 
 ---
 
@@ -121,8 +118,7 @@ At fleet scale, rare events become predictable operational risks.
 
 A mature GPUaaS platform treats SDC not as a hardware accident, but as a governance and lifecycle management concern.
 
-Silent corruption is not just a GPU problem.  
-It is a control plane responsibility.
+Silent corruption is not just a GPU problem.  It is a control plane responsibility.
 
 ---
 
@@ -135,7 +131,5 @@ It is a control plane responsibility.
 
 ---
 
-Maintaining trust in shared GPU infrastructure requires more than uptime.
-
-It requires confidence that results are correct.
+Maintaining trust in shared GPU infrastructure requires more than uptime.  It requires confidence that results are correct.
 

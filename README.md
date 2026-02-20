@@ -147,9 +147,9 @@ A glossary of terms used when managing a cluster of GPUs.
 📂 [`slient-data-corruption/`](./gpuaas-fleet/silent-data-corruption/README.md)
 
 ### PIQC Control Plane
-ParallelIQ control plane high level view   
+ParallelIQ GPUaaS control plane high level view   
 
-📂 [`piqc-control-plane/`](./piqc-control-plane/README.md)
+📂 [`gpuaas-control-plane/`](./gpuaas-fleet/gpuaas-control-plane/README.md)
 
 ---
 
