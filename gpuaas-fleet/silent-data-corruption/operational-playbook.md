@@ -15,11 +15,11 @@ The goal is to minimize impact, protect tenants, and preserve trust.
 
 # 1. Guiding Principles
 
-1. Protect correctness over utilization.
-2. Isolate risk quickly.
-3. Avoid silent recycling of unstable hardware.
-4. Communicate clearly when tenant impact is possible.
-5. Feed detection signals into governance policies.
+- Protect correctness over utilization.
+- Isolate risk quickly.
+- Avoid silent recycling of unstable hardware.
+- Communicate clearly when tenant impact is possible.
+- Feed detection signals into governance policies.
 
 SDC response is both technical and reputational.
 
