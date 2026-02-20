@@ -51,9 +51,10 @@ Monitor:
 
 Commands:
 
+```bash
 dmesg | grep -i xid
 journalctl -k | grep -i nvrm
-
+```
 
 Repeated Xid events on the same GPU → mark for investigation.
 
@@ -67,7 +68,9 @@ Monitor:
 
 Command:
 
+```bash
 nvidia-smi --query-gpu=temperature.gpu,power.draw --format=csv
+```
 
 Unexpected deviation from similar GPUs can signal instability.
 
