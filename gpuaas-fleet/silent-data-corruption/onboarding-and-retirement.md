@@ -53,34 +53,28 @@ Commands:
 ```bash
 nvidia-smi -q
 nvidia-smi -q -d ECC
+```
 
 Reject GPUs with:
 
-Uncorrectable ECC errors
-
-Significant retired page counts
-
-Repeated Xid history
+- Uncorrectable ECC errors
+- Significant retired page counts
+- Repeated Xid history
 
 2.2 Burn-In Testing
 
 Run sustained stress tests:
 
-24–72 hour compute workload
-
-Memory stress validation
-
-Tensor core stress validation
-
-Thermal stability under load
+- 24–72 hour compute workload
+- Memory stress validation
+- Tensor core stress validation
+- Thermal stability under load
 
 Burn-in goals:
 
-Surface early-life failures
-
-Detect unstable interconnects
-
-Validate power stability
+- Surface early-life failures
+- Detect unstable interconnects
+- Validate power stability
 
 Burn-in should simulate real-world distributed workload patterns when possible.
 
@@ -88,21 +82,16 @@ Burn-in should simulate real-world distributed workload patterns when possible.
 
 Record:
 
-MFU baseline
-
-Average temperature under load
-
-Power draw
-
-Step time performance
+- MFU baseline
+- Average temperature under load
+- Power draw
+- Step time performance
 
 This baseline enables:
 
-Future drift detection
-
-Anomaly detection
-
-Fleet comparison
+- Future drift detection
+- Anomaly detection
+- Fleet comparison
 
 Without baseline data, drift becomes invisible.
 
@@ -110,29 +99,23 @@ Without baseline data, drift becomes invisible.
 
 After validation:
 
-Stable GPUs → Reserved / Premium tier
-
-Minor variance GPUs → Elastic tier
-
-Unstable GPUs → Best-effort only
+- Stable GPUs → Reserved / Premium tier
+- Minor variance GPUs → Elastic tier
+- Unstable GPUs → Best-effort only
 
 Tiering protects high-value workloads from hidden instability.
 
-3. Continuous Health Monitoring
+# 3. Continuous Health Monitoring
 
 Onboarding is not enough.
 
 Track per GPU:
 
-ECC growth rate
-
-Xid frequency
-
-Retired page increase
-
-Thermal variance
-
-MFU drift
+- ECC growth rate
+- Xid frequency
+- Retired page increase
+- Thermal variance
+- MFU drift
 
 Assign a health score:
 
@@ -141,123 +124,93 @@ health_score =
    Xid_weight × xid_rate +
    thermal_weight × temp_variance
 
-
 This score informs:
 
-Placement restrictions
+- Placement restrictions
+- Tier downgrades
+- Retirement decisions
 
-Tier downgrades
-
-Retirement decisions
-
-4. GPU Retirement Criteria
+# 4. GPU Retirement Criteria
 
 GPUs should be retired or downgraded when:
 
-Uncorrectable ECC occurs
+- Uncorrectable ECC occurs
+- Retired page growth accelerates
+- Repeated Xid events appear
+- Persistent MFU instability
+- Thermal instability under normal load
 
-Retired page growth accelerates
+Do not wait for catastrophic failure.  Gradual instability is often more damaging than hard crashes.
 
-Repeated Xid events appear
-
-Persistent MFU instability
-
-Thermal instability under normal load
-
-Do not wait for catastrophic failure.
-
-Gradual instability is often more damaging than hard crashes.
-
-5. Quarantine Process
+# 5. Quarantine Process
 
 When instability is detected:
 
-Remove GPU from reserved tier
-
-Drain active workloads
-
-Run validation stress test
-
-Re-score health
+- Remove GPU from reserved tier
+- Drain active workloads
+- Run validation stress test
+- Re-score health
 
 If instability persists:
 
-Move to best-effort tier
-
-Or fully remove from fleet
+- Move to best-effort tier
+- Or fully remove from fleet
 
 Never silently recycle degraded GPUs back into premium capacity.
 
-6. Offboarding & Decommissioning
+# 6. Offboarding & Decommissioning
 
 When permanently retiring GPUs:
 
-Remove from scheduler pool
-
-Update fleet inventory
-
-Archive health history
-
-Audit placement impact
+- Remove from scheduler pool
+- Update fleet inventory
+- Archive health history
+- Audit placement impact
 
 Document:
 
-Reason for retirement
-
-Impacted tenants (if any)
-
-Replacement plan
+- Reason for retirement
+- Impacted tenants (if any)
+- Replacement plan
 
 Fleet hygiene is as important as fleet growth.
 
-7. Control Plane Integration
+# 7. Control Plane Integration
 
 A mature GPUaaS control plane should:
 
-Enforce onboarding checks before activation
-
-Track health score automatically
-
-Restrict placement based on health
-
-Trigger automatic quarantine workflows
-
-Prevent degraded GPUs from entering premium tiers
+- Enforce onboarding checks before activation
+- Track health score automatically
+- Restrict placement based on health
+- Trigger automatic quarantine workflows
+- Prevent degraded GPUs from entering premium tiers
 
 Lifecycle management should be policy-driven — not manual.
 
-8. Economic Perspective
+# 8. Economic Perspective
 
 Poor lifecycle management causes:
 
-Hidden corruption
-
-Performance drift
-
-Increased support costs
-
-Tenant churn
+- Hidden corruption
+- Performance drift
+- Increased support costs
+- Tenant churn
 
 Structured onboarding and retirement:
 
-Reduces SDC risk
-
-Improves SLA reliability
-
-Protects premium tiers
-
-Stabilizes fleet economics
+- Reduces SDC risk
+- Improves SLA reliability
+- Protects premium tiers
+- Stabilizes fleet economics
 
 Operational discipline compounds positively over time.
 
-Summary
+# Summary
 
 In GPUaaS, hardware lifecycle discipline is not optional.
 
-Onboarding ensures stability before exposure.
-Monitoring ensures drift is detected early.
-Retirement ensures instability does not propagate.
+- Onboarding ensures stability before exposure.
+- Monitoring ensures drift is detected early.
+- Retirement ensures instability does not propagate.
 
 Fleet hygiene is a competitive advantage.
-
-
