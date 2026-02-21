@@ -1,9 +1,7 @@
 # Distributed Training Considerations  
 _For GPUaaS Providers Managing Multi-GPU & Multi-Host Workloads_
 
-Distributed training amplifies both performance and risk.
-
-In GPUaaS environments, training jobs commonly use:
+Distributed training amplifies both performance and risk.  In GPUaaS environments, training jobs commonly use:
 
 - Data parallelism  
 - Tensor parallelism  
