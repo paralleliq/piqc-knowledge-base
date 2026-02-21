@@ -152,6 +152,4 @@ MFU answers:
 
 > Is the GPU operating near its compute potential?
 
-Busy is not the same as efficient.
-
-MFU measures efficiency.
+Busy is not the same as efficient.  MFU measures efficiency.
