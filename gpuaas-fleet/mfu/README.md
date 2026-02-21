@@ -123,7 +123,7 @@ MFU sits at the intersection of these layers.  It connects:
 - Infrastructure topology  
 - Economic outcomes  
 
-This makes MFU a foundational signal in intelligent GPU orchestration.
+This makes MFU a foundational signal in intelligent GPU orchestration.  MFU represents the **efficiency dimension** of GPUaaS control-plane design.
 
 ---
 
@@ -138,10 +138,6 @@ This makes MFU a foundational signal in intelligent GPU orchestration.
 📂 [`mfu-tenant-view/`](./mfu-tenant-view.md)
 
 📂 [`mfu-vs-utilization/`](./mfu-vs-utilization.md)
-
----
-
-MFU represents the **efficiency dimension** of GPUaaS control-plane design.
 
 ---
 
