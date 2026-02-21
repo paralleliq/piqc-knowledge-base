@@ -1,10 +1,6 @@
 # MFU vs GPU Utilization
 
-GPU utilization and Model FLOP Utilization (MFU) are often confused.
-
-They are related — but they measure fundamentally different things.
-
-Understanding the distinction is critical for both tenants and GPUaaS providers.
+GPU utilization and Model FLOP Utilization (MFU) are often confused.  They are related — but they measure fundamentally different things.  Understanding the distinction is critical for both tenants and GPUaaS providers.
 
 ---
 
@@ -22,9 +18,10 @@ It answers the question:
 
 Example:
 
+```bash
 SM Utilization: 92%
 Memory Utilization: 76%
-
+```
 
 A high utilization number means the GPU is not idle.  It does **not** guarantee efficient computation.
 
@@ -50,9 +47,7 @@ MFU answers a deeper question:
 
 ## Why High Utilization ≠ High MFU
 
-A GPU can be “busy” but inefficient.
-
-Examples:
+A GPU can be “busy” but inefficient.  Examples:
 
 ### 1️⃣ Small Batch Size
 - GPU is active
@@ -90,9 +85,7 @@ In most cases:
 MFU ≤ GPU Utilization
 ```
 
-Utilization measures activity.  MFU measures effective math.  However, the two metrics are not linearly correlated.
-
-Two workloads with identical GPU utilization can have very different MFU.
+Utilization measures activity.  MFU measures effective math.  However, the two metrics are not linearly correlated.  Two workloads with identical GPU utilization can have very different MFU.
 
 ---
 
@@ -107,8 +100,10 @@ From a tenant viewpoint:
 
 A tenant may observe:
 
+```bash
 - 85% GPU utilization  
 - 42% MFU  
+```
 
 This suggests configuration or architectural inefficiencies.
 
@@ -126,9 +121,11 @@ From a GPUaaS provider viewpoint:
 
 A fleet can show:
 
+```bash
 - 90% allocation  
 - 88% utilization  
 - 45% fleet MFU  
+```
 
 This indicates hidden revenue inefficiency.
 
@@ -170,8 +167,7 @@ A model-aware control plane reasons about:
 - Drift between intent and execution
 - Economic impact of inefficiency
 
-Utilization keeps GPUs busy.
-MFU keeps GPUs productive.
+Utilization keeps GPUs busy.  MFU keeps GPUs productive.
 
 ---
 
@@ -187,5 +183,5 @@ MFU keeps GPUs productive.
 
 In AI-native infrastructure, MFU becomes a first-class metric alongside utilization.
 
-Utilization answers: *Are we busy?*  
+Utilization answers: *Are we busy?* 
 MFU answers: *Are we efficient?*
