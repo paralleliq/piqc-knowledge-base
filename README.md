@@ -142,12 +142,14 @@ A public, vendor-neutral catalog to detect training–serving skew and **configu
 ### GPUaaS Control Plane Glossary
 A glossary of terms used when managing a cluster of GPUs.   
 
-📂 [`gpuaas-control-plane-glossary/`](./gpuaas-control-plane-glossary/README.md)
+📂 [`gpuaas-control-plane-glossary/`](./gpuaas-fleet/gpuaas-control-plane-glossary/README.md)
+
+📂 [`slient-data-corruption/`](./gpuaas-fleet/silent-data-corruption/README.md)
 
 ### PIQC Control Plane
-ParallelIQ control plane high level view   
+ParallelIQ GPUaaS control plane high level view   
 
-📂 [`piqc-control-plane/`](./piqc-control-plane/README.md)
+📂 [`gpuaas-control-plane/`](./gpuaas-fleet/gpuaas-control-plane/README.md)
 
 ---
 
