@@ -1,8 +1,6 @@
 # Model FLOP Utilization (MFU) — Definition
 
-Model FLOP Utilization (MFU) measures how efficiently a model converts available GPU compute capacity into useful mathematical work.
-
-It quantifies the fraction of theoretical peak FLOPs that are actually used for model computation.
+Model FLOP Utilization (MFU) measures how efficiently a model converts available GPU compute capacity into useful mathematical work.  It quantifies the fraction of theoretical peak FLOPs that are actually used for model computation.
 
 ---
 

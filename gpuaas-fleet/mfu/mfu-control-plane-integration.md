@@ -1,15 +1,15 @@
 # MFU — Control Plane Integration
 
-Model FLOP Utilization (MFU) is not merely an observability metric.
-
-In a model-aware GPUaaS architecture, MFU becomes a control-plane signal.
+Model FLOP Utilization (MFU) is not merely an observability metric.  In a model-aware GPUaaS architecture, MFU becomes a control-plane signal.
 
 Traditional schedulers reason about quantities:
+
 - CPU
 - Memory
 - GPU count
 
 A model-aware control plane reasons about productivity:
+
 - Model efficiency
 - Scaling efficiency
 - Economic efficiency
@@ -47,17 +47,13 @@ Before admitting a workload, the control plane can reason about:
 - Precision mode
 - Hardware topology suitability
 
-MFU provides a lens for evaluating expected efficiency relative to hardware class.
-
-Admission decisions may consider whether projected workload efficiency aligns with fleet economics.
+MFU provides a lens for evaluating expected efficiency relative to hardware class.  Admission decisions may consider whether projected workload efficiency aligns with fleet economics.
 
 ---
 
 ### 2️⃣ Placement Optimization
 
-Placement is not just about available GPUs.
-
-It is about matching workload characteristics to:
+Placement is not just about available GPUs.  It is about matching workload characteristics to:
 
 - Interconnect topology (NVLink vs PCIe)
 - GPU generation
@@ -138,9 +134,7 @@ MFU sits at the intersection of:
 - Infrastructure topology
 - Economic outcomes
 
-Without model awareness, MFU is just a number.
-
-With model awareness, MFU becomes actionable.
+Without model awareness, MFU is just a number.  With model awareness, MFU becomes actionable.
 
 ---
 
@@ -185,11 +179,7 @@ In AI-native infrastructure:
 - Utilization alone is incomplete
 - Reliability alone is not enough
 
-Productivity must be measured.
-
-MFU introduces a compute-efficiency dimension into control-plane reasoning.
-
-As GPU fleets scale to tens of thousands of devices, efficiency becomes a first-class control objective — not just an afterthought.
+Productivity must be measured.  MFU introduces a compute-efficiency dimension into control-plane reasoning.  As GPU fleets scale to tens of thousands of devices, efficiency becomes a first-class control objective — not just an afterthought.
 
 ---
 
