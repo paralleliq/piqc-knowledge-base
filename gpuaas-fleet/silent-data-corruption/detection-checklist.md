@@ -135,9 +135,7 @@ Without traffic spike → investigate GPU health.  SDC often manifests first as 
 
 ## 4. Fleet-Level Pattern Detection
 
-At scale, rare errors become predictable risks.
-
-Track fleet-wide:
+At scale, rare errors become predictable risks.  Track fleet-wide:
 
 - GPUs with increasing ECC trends
 - Clusters with abnormal instability density
@@ -145,11 +143,12 @@ Track fleet-wide:
 
 Example GPU health scoring model:
 
+```bash
 health_score =
    ECC_weight × ecc_error_rate +
    Xid_weight × xid_frequency +
    thermal_weight × temperature_variance
-
+```
 
 Use health score to:
 
@@ -197,5 +196,4 @@ Effective detection requires:
 
 Integration into governance workflows
 
-SDC detection is not just observability —
-it must inform placement, tiering, and quarantine decisions in GPUaaS platforms.
+SDC detection is not just observability —  it must inform placement, tiering, and quarantine decisions in GPUaaS platforms.
