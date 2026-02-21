@@ -66,9 +66,7 @@ For a GPUaaS provider, MFU represents:
 - Structural inefficiencies across model types  
 - Fleet-level economic performance  
 
-A fleet can show high allocation rates while still delivering poor effective compute output.
-
-MFU bridges infrastructure metrics and financial outcomes.
+A fleet can show high allocation rates while still delivering poor effective compute output.  MFU bridges infrastructure metrics and financial outcomes.
 
 ---
 
@@ -88,9 +86,7 @@ Understanding MFU across these layers enables more informed infrastructure decis
 
 ## MFU as a Control-Plane Signal
 
-In a model-aware control plane, MFU is elevated from a dashboard metric to a policy input.
-
-MFU can inform:
+In a model-aware control plane, MFU is elevated from a dashboard metric to a policy input.  MFU can inform:
 
 - Admission control decisions  
 - Placement optimization (topology, NVLink vs PCIe, MIG shape)  
@@ -120,9 +116,7 @@ A model-aware control plane introduces semantic awareness:
 - Precision choice
 - Communication pattern
 
-MFU sits at the intersection of these layers.
-
-It connects:
+MFU sits at the intersection of these layers.  It connects:
 
 - Model intent  
 - Runtime behavior  

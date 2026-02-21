@@ -1,8 +1,6 @@
 # MFU — Tenant View
 
-From a tenant perspective, Model FLOP Utilization (MFU) reflects how efficiently a model converts allocated GPU capacity into useful computation.
-
-For tenants running training or inference workloads, MFU answers a critical question:
+From a tenant perspective, Model FLOP Utilization (MFU) reflects how efficiently a model converts allocated GPU capacity into useful computation.  For tenants running training or inference workloads, MFU answers a critical question:
 
 > Am I getting the maximum performance per GPU that I am paying for?
 
@@ -26,9 +24,7 @@ A tenant may see:
 - Stable memory usage
 - No obvious runtime errors
 
-Yet still observe low MFU.
-
-That gap often represents wasted compute budget.
+Yet still observe low MFU.  That gap often represents wasted compute budget.
 
 ---
 
@@ -41,6 +37,7 @@ That gap often represents wasted compute budget.
 - GPU appears active but not saturated
 
 Typical signal:
+
 - High utilization
 - Low achieved FLOPs
 - Low MFU
@@ -57,6 +54,7 @@ In distributed training:
 - Slow interconnect (PCIe vs NVLink)
 
 Signal:
+
 - GPUs stall waiting on synchronization
 - MFU drops even though GPUs are allocated
 
@@ -70,6 +68,7 @@ Signal:
 - Storage latency
 
 Signal:
+
 - Intermittent GPU idling
 - MFU fluctuates over time
 
@@ -82,6 +81,7 @@ Signal:
 - Suboptimal kernel fusion
 
 Signal:
+
 - High memory utilization
 - Low effective FLOP throughput
 
@@ -94,6 +94,7 @@ Signal:
 - Non-optimized custom kernels
 
 Signal:
+
 - Utilization high
 - MFU lower than expected for hardware class
 
@@ -114,6 +115,7 @@ MFU is influenced by:
 - Micro-batch sizing
 
 Training MFU often decreases as:
+
 - Node count increases
 - Communication overhead rises
 
@@ -177,9 +179,7 @@ This creates an iterative performance tuning loop.
 
 ## What Good Looks Like
 
-There is no universal “good” MFU.
-
-It depends on:
+There is no universal “good” MFU.  It depends on:
 
 - GPU generation (A100 vs H100 vs MI300)
 - Model architecture

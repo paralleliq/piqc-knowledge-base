@@ -1,239 +1,194 @@
-# MFU — Tenant View
+# MFU — Provider View
 
-From a tenant perspective, Model FLOP Utilization (MFU) reflects how efficiently a model converts allocated GPU capacity into useful computation.
+For a GPUaaS provider, Model FLOP Utilization (MFU) represents economic efficiency.  While allocation rate and GPU utilization measure activity, MFU measures productivity.  It answers a critical question:
 
-For tenants running training or inference workloads, MFU answers a critical question:
+> Are allocated GPUs generating proportional computational value?
 
-> Am I getting the maximum performance per GPU that I am paying for?
-
----
-
-## What MFU Tells a Tenant
-
-MFU exposes whether inefficiency originates from:
-
-- Model configuration
-- Runtime setup
-- Parallelism strategy
-- Batch size selection
-- Precision choice
-- Communication overhead
-- Memory constraints
-
-A tenant may see:
-
-- High GPU utilization
-- Stable memory usage
-- No obvious runtime errors
-
-Yet still observe low MFU.  That gap often represents wasted compute budget.
+In AI infrastructure, allocation does not guarantee efficiency.  MFU exposes the difference.
 
 ---
 
-## Common Causes of Low MFU
+## The Allocation Illusion
 
-### 1️⃣ Small Batch Size
+A fleet may show:
 
-- Underutilized tensor cores
-- Insufficient arithmetic intensity
-- GPU appears active but not saturated
+- 90% GPU allocation  
+- 85% GPU utilization  
+- Healthy node uptime  
 
-Typical signal:
-- High utilization
-- Low achieved FLOPs
-- Low MFU
+Yet still suffer from:
 
----
+- Low effective compute output  
+- Suboptimal tenant configurations  
+- Fragmented GPU topology  
+- Communication bottlenecks  
+- Under-batched inference  
 
-### 2️⃣ Communication Bottlenecks
-
-In distributed training:
-
-- All-reduce overhead
-- Gradient synchronization delays
-- Imbalanced rank performance
-- Slow interconnect (PCIe vs NVLink)
-
-Signal:
-- GPUs stall waiting on synchronization
-- MFU drops even though GPUs are allocated
+High allocation does not imply high productivity.  MFU reveals hidden inefficiency inside “healthy-looking” clusters.
 
 ---
 
-### 3️⃣ Data Pipeline Starvation
+## Why MFU Matters Financially
 
-- Slow data loaders
-- Inefficient preprocessing
-- I/O bottlenecks
-- Storage latency
+For GPUaaS providers, MFU directly influences:
 
-Signal:
-- Intermittent GPU idling
-- MFU fluctuates over time
+- Revenue per GPU-hour  
+- Effective cost per delivered token  
+- Training throughput per node  
+- Fleet-level margin  
+- Capital efficiency  
 
----
+Low fleet MFU means:
 
-### 4️⃣ Memory-Bound Workloads
+- Hardware is active but underproductive  
+- Tenants may be overpaying for inefficient setups  
+- The provider’s margin may erode silently  
+- Capacity expansion decisions may be distorted  
 
-- Low arithmetic intensity
-- Frequent memory stalls
-- Suboptimal kernel fusion
-
-Signal:
-- High memory utilization
-- Low effective FLOP throughput
+MFU connects operational metrics to financial outcomes.
 
 ---
 
-### 5️⃣ Precision or Kernel Mismatch
+## Fleet-Level MFU
 
-- Using FP32 when BF16/FP16 would suffice
-- Missing tensor-core optimization
-- Non-optimized custom kernels
+MFU can be reasoned about at multiple levels:
 
-Signal:
-- Utilization high
-- MFU lower than expected for hardware class
+| Level        | Interpretation |
+|--------------|----------------|
+| Workload MFU | Efficiency of a specific tenant workload |
+| Node MFU     | Productivity of a single GPU node |
+| Fleet MFU    | Economic efficiency of the entire GPU fleet |
 
----
+Fleet MFU highlights structural inefficiencies such as:
 
-## Training vs Inference MFU
-
-MFU characteristics differ across workload types.
-
-### Training
-
-MFU is influenced by:
-
-- Data parallelism efficiency
-- Model parallelism strategy
-- FSDP / ZeRO / tensor parallel overhead
-- Gradient accumulation
-- Micro-batch sizing
-
-Training MFU often decreases as:
-- Node count increases
-- Communication overhead rises
+- Certain model classes underperforming
+- Specific GPU types consistently low-performing
+- Communication topology mismatches
+- Systematic configuration drift
 
 ---
 
-### Inference
+## Structural Sources of Low Provider MFU
 
-MFU is influenced by:
+### 1️⃣ Under-Batched Inference
 
-- Batch size
-- Concurrency
-- KV cache efficiency
-- Request variability
-- Sequence length distribution
-
-Low-concurrency inference workloads often show:
-
-- High allocation
-- Low MFU
-- High cost per token
+- Tenants deploy low-concurrency workloads
+- GPUs remain allocated but underutilized at the math level
+- Revenue per GPU-hour declines
 
 ---
 
-## Why MFU Matters Financially for Tenants
+### 2️⃣ Poor Topology Matching
 
-Tenants typically pay for:
-
-- GPU-hours
-- Reserved capacity
-- Provisioned nodes
-
-Low MFU means:
-
-- Higher cost per training step
-- Higher cost per token
-- Longer training time
-- Lower throughput per dollar
-
-Improving MFU can:
-
-- Reduce training time
-- Increase tokens/sec
-- Lower cost per model iteration
-- Improve SLA stability
+- Multi-node training placed across weak interconnects
+- NVLink-capable models deployed on PCIe clusters
+- Communication overhead reduces effective FLOPs
 
 ---
 
-## MFU as a Feedback Loop
+### 3️⃣ MIG Fragmentation
 
-For tenants, MFU should be part of a continuous optimization cycle:
-
-1. Define workload intent  
-2. Measure observed MFU  
-3. Compare against expected hardware capability  
-4. Adjust configuration  
-5. Re-measure  
-
-This creates an iterative performance tuning loop.
+- GPU slices allocated in incompatible shapes
+- Stranded compute capacity
+- Reduced tensor core density per workload
 
 ---
 
-## What Good Looks Like
+### 4️⃣ Scaling Inefficiency
 
-There is no universal “good” MFU.
-
-It depends on:
-
-- GPU generation (A100 vs H100 vs MI300)
-- Model architecture
-- Precision format
-- Parallelism method
-- Workload type
-
-However, tenants should track:
-
-- MFU consistency over time
-- MFU across model versions
-- MFU across hardware classes
-- MFU across cluster sizes
-
-Drift in MFU often indicates:
-
-- Configuration regressions
-- Scaling inefficiencies
-- Infrastructure constraints
+- MFU degrades as cluster size increases
+- Inter-node communication dominates compute
+- Parallel efficiency collapses at scale
 
 ---
 
-## Tenant Questions to Ask
+### 5️⃣ Configuration Drift
 
-- Is my MFU consistent across GPU types?
-- Does MFU degrade as I scale out?
-- Is inference MFU limited by batch size or request variability?
-- Am I memory-bound or compute-bound?
-- Is my cost per token aligned with expected MFU?
+- Tenants change batch size or precision
+- Kernel mismatches after upgrades
+- Runtime regressions unnoticed by utilization metrics
 
 ---
 
-## Relationship to the Control Plane
+## MFU vs Traditional Provider Metrics
 
-In a model-aware control plane, MFU can support tenants by:
+Traditional provider dashboards track:
 
-- Highlighting configuration inefficiencies
-- Identifying scaling bottlenecks
-- Suggesting placement strategies
-- Exposing performance drift
+- Allocation rate  
+- GPU utilization  
+- Node health  
+- Error rates  
 
-MFU becomes more than a metric — it becomes a tuning signal.
+MFU introduces:
+
+- Compute productivity  
+- Efficiency per allocated GPU  
+- Economic signal per workload  
+- Drift between expected and observed performance  
+
+It complements traditional infrastructure metrics.
 
 ---
 
-## Summary
+## MFU as an Economic Signal
 
-From the tenant perspective:
+From a provider perspective, MFU enables:
 
-- GPU utilization tells you if the GPU is busy.
-- MFU tells you if the model is efficient.
-- Cost per token reflects the outcome.
+- Identifying underproductive workloads  
+- Advising tenants on configuration improvements  
+- Detecting systemic inefficiencies  
+- Prioritizing hardware upgrades  
+- Informing capacity planning decisions  
 
-Tenants that monitor MFU systematically can:
+It also supports:
 
-- Improve throughput
-- Reduce infrastructure cost
-- Scale more predictably
-- Avoid hidden performance regressions
+- Tiered pricing strategies  
+- Efficiency-based advisory services  
+- Intelligent placement policies  
+
+---
+
+## Control-Plane Implications
+
+In a model-aware control plane, MFU becomes a strategic signal.
+
+It can influence:
+
+- Admission gating  
+- Placement selection  
+- Topology matching  
+- Autoscaling behavior  
+- Oversubscription decisions  
+- Fleet expansion strategy  
+
+The control plane can reason about:
+
+- Expected MFU from workload intent  
+- Observed MFU at runtime  
+- Drift between projected and actual efficiency  
+
+This transforms MFU from a passive metric into an active orchestration input.
+
+---
+
+## Provider Questions to Ask
+
+- Which workloads consistently show low MFU?
+- Does MFU vary by GPU type?
+- Does MFU degrade at higher scale?
+- Are certain tenants under-batching inference?
+- Is fleet MFU improving or declining over time?
+- Are new hardware investments increasing effective MFU?
+
+---
+
+## Strategic Framing
+
+If Power Usage Effectiveness (PUE) measures infrastructure efficiency in data centers, MFU measures compute productivity in AI-native infrastructure.  For GPUaaS providers operating at scale, MFU becomes:
+
+- A margin indicator  
+- A fleet optimization signal  
+- A control-plane input  
+- A competitive differentiator  
+
+Allocation keeps GPUs busy.  MFU keeps GPUs economically productive.
