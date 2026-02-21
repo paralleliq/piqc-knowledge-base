@@ -1,8 +1,6 @@
 # MFU — Control Plane Integration
 
-Model FLOP Utilization (MFU) is not merely an observability metric.  In a model-aware GPUaaS architecture, MFU becomes a control-plane signal.
-
-Traditional schedulers reason about quantities:
+Model FLOP Utilization (MFU) is not merely an observability metric.  In a model-aware GPUaaS architecture, MFU becomes a control-plane signal.  Traditional schedulers reason about quantities:
 
 - CPU
 - Memory
