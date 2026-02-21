@@ -89,10 +89,7 @@ In distributed training:
 
 - Each rank processes data independently  
 - Gradients are aggregated across ranks  
-
-If one rank behaves differently:
-
-- The global model state may silently diverge  
+- If one rank behaves differently the global model state may silently diverge  
 
 GPUaaS platforms should encourage or enforce:
 
@@ -106,9 +103,7 @@ Silent divergence is a classic SDC pattern in distributed environments.
 
 ## 4. Heterogeneous GPU Risks
 
-Distributed jobs often assume identical hardware.
-
-Risks arise when:
+Distributed jobs often assume identical hardware.  Risks arise when:
 
 - Mixing GPU types (A100 + H100)  
 - Mixing interconnect speeds  
@@ -145,9 +140,7 @@ Variance across replicas is often more informative than absolute values.
 
 ## 6. Checkpoint Integrity
 
-Distributed training relies on periodic checkpoints.
-
-GPUaaS providers should:
+Distributed training relies on periodic checkpoints.  GPUaaS providers should:
 
 - Monitor checkpoint write failures  
 - Track checkpoint size anomalies  
@@ -162,9 +155,7 @@ Corrupted checkpoints can:
 
 ## 7. Reclaim & Preemption Policies
 
-Distributed training is sensitive to interruption.
-
-GPUaaS platforms must clearly define:
+Distributed training is sensitive to interruption.  GPUaaS platforms must clearly define:
 
 - Which tiers are reclaimable  
 - Preemption notice duration  
@@ -189,9 +180,7 @@ Placement should consider:
 - GPU homogeneity  
 - Health score of GPUs  
 
-Blind scheduling increases instability risk.
-
-Model-aware placement reduces failure probability.
+Blind scheduling increases instability risk.  Model-aware placement reduces failure probability.
 
 ---
 
@@ -204,17 +193,13 @@ GPUaaS operators should implement:
 - Fleet-wide health scoring  
 - Distributed-job-specific monitoring  
 
-Training workloads stress hardware more aggressively than inference.
-
-They surface latent instability quickly.
+Training workloads stress hardware more aggressively than inference.  They surface latent instability quickly.
 
 ---
 
 ## 10. Control Plane Implications
 
-Distributed training requires governance beyond simple scheduling.
-
-A mature GPUaaS control plane should:
+Distributed training requires governance beyond simple scheduling.  A mature GPUaaS control plane should:
 
 - Detect hardware anomalies before job placement  
 - Enforce homogeneity rules  
@@ -222,9 +207,7 @@ A mature GPUaaS control plane should:
 - Integrate MFU and divergence monitoring  
 - Coordinate reclaim safely  
 
-Distributed training magnifies infrastructure weaknesses.
-
-Policy-aware orchestration reduces operational variability.
+Distributed training magnifies infrastructure weaknesses.  Policy-aware orchestration reduces operational variability.
 
 ---
 
@@ -237,8 +220,5 @@ Distributed training introduces:
 - Sensitivity to heterogeneity  
 - High tenant impact from instability  
 
-GPUaaS providers must treat distributed workloads as first-class citizens in fleet governance.
-
-Reliability is not just about uptime.  
-It is about correctness across ranks.
+GPUaaS providers must treat distributed workloads as first-class citizens in fleet governance.  Reliability is not just about uptime.  It is about correctness across ranks.
 
