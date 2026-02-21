@@ -150,9 +150,7 @@ It also supports:
 
 ## Control-Plane Implications
 
-In a model-aware control plane, MFU becomes a strategic signal.
-
-It can influence:
+In a model-aware control plane, MFU becomes a strategic signal.  It can influence:
 
 - Admission gating  
 - Placement selection  
