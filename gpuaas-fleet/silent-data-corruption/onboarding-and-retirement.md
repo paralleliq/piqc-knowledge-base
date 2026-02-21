@@ -61,7 +61,7 @@ Reject GPUs with:
 - Significant retired page counts
 - Repeated Xid history
 
-2.2 Burn-In Testing
+## 2.2 Burn-In Testing
 
 Run sustained stress tests:
 
@@ -78,7 +78,7 @@ Burn-in goals:
 
 Burn-in should simulate real-world distributed workload patterns when possible.
 
-2.3 Baseline Performance Fingerprinting
+## 2.3 Baseline Performance Fingerprinting
 
 Record:
 
@@ -95,7 +95,7 @@ This baseline enables:
 
 Without baseline data, drift becomes invisible.
 
-2.4 Tier Assignment
+## 2.4 Tier Assignment
 
 After validation:
 
@@ -107,9 +107,7 @@ Tiering protects high-value workloads from hidden instability.
 
 # 3. Continuous Health Monitoring
 
-Onboarding is not enough.
-
-Track per GPU:
+Onboarding is not enough.  Track per GPU:
 
 - ECC growth rate
 - Xid frequency
@@ -119,10 +117,12 @@ Track per GPU:
 
 Assign a health score:
 
+```bash
 health_score =
    ECC_weight × ecc_growth +
    Xid_weight × xid_rate +
    thermal_weight × temp_variance
+```
 
 This score informs:
 
