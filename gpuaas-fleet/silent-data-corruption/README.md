@@ -125,8 +125,11 @@ Silent corruption is not just a GPU problem.  It is a control plane responsibili
 ## Related Documents
 
 📂 [`detection-checklist/`](./detection-checklist.md)
+
 📂 [`distributed-training-considerations/`](./distributed-training-considerations.md)
+
 📂 [`onboarding-and-retirement/`](./onboarding-and-retirement.md)
+
 📂 [`operational-playbook/`](./operational-playbook.md)
 
 ---
