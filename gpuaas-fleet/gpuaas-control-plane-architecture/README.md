@@ -174,6 +174,18 @@ This is why GPU clouds feel unreliable and unfair under load.
 ![GPU Platform Control Plane Swim Lane](gpuaasbpm.jpg)
 
 ---
+## Full-Stack Heterogeneous Performance & Control Plane View
+
+| Lane | Layer Name | Primary Responsibility | Typical Tooling | Answers What Question? |
+|------|------------|------------------------|------------------|------------------------|
+| 1 | Governance & Intent | Policy, SLA, compliance, cost governance | OPA, Kyverno, Kubecost, Datadog, Grafana, Audit logging systems | What is allowed? What is promised? What is billable? |
+| 2 | Control Plane & Workflow | Admission control, policy enforcement, workflow orchestration | Kubernetes control plane, Slurm controller, LSF, Kueue, Argo, Kubeflow, Custom CRDs, n8n | Should this workload run? Under what constraints? |
+| 3 | Orchestration & Placement | Resource binding, topology-aware scheduling, isolation | Kubernetes scheduler, Slurm scheduler, Karpenter, Node affinity/taints, MIG configuration, NCCL topology detection, Ray placement groups | Where should it run? On which node / GPU / topology domain? |
+| 4 | Runtime & Execution | Actual workload execution, kernel launches, collectives | PyTorch, TensorFlow, vLLM, Triton, CUDA runtime, NCCL, cuBLAS, cuDNN, MPI, OpenMP, jemalloc | How is the workload structured and executed? |
+| 5 | Microarchitecture & Heterogeneous Performance Attribution | Stall analysis, cache behavior, warp efficiency, interconnect bottlenecks | perf, eBPF, VTune, LIKWID, Nsight Systems, Nsight Compute, CUPTI, Flame graphs, NCCL tests, ibstat | Why is it slow? Which domain is limiting (CPU, GPU, memory, fabric)? |
+| 6 | Performance & Reliability Envelope (Physical Platform & RAS) | Power, thermal limits, clock behavior, ECC, hardware health, degradation | nvidia-smi, DCGM, BMC/IPMI, Redfish, lm-sensors, kernel logs, ECC counters, Xid logs | Is performance sustainable? Is hardware stable and safe for placement? |
+
+---
 
 ## What This Is (and Is Not)
 
