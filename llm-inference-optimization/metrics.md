@@ -29,6 +29,9 @@ Infrastructure efficiency.
 ## System Metrics
 
 GPU utilization
+
 Memory bandwidth utilization
+
 Active sequences per GPU
+
 KV cache memory usage
