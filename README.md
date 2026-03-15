@@ -132,12 +132,12 @@ A public, vendor-neutral catalog to identify GPU under-utilization caused by **m
 ### KV Cache Pressure Playbook
 A public, vendor-neutral catalog to detect, diagnose, and mitigate KV cache pressure that silently causes **batching collapse, rising latency, and hidden GPU memory exhaustion** in vLLM.
 
-📂 [`llm-inference-optimization/`](./llm-inference-optimization/README.md)
+📂 [`kv-cache-pressure-playbook/`](./kv-cache-pressure-playbook/README.md)
 
 ### LLM Inference Optimization Playbook
 A public, vendor-neutral playbook to **detect, measure, and optimize LLM inference performance**, covering **prefill latency, decode throughput, KV cache behavior, and GPU utilization** in modern serving systems.
 
-📂 [`kv-cache-pressure-playbook/`](./kv-cache-pressure-playbook/README.md)
+📂 [`llm-inference-optimization/`](./llm-inference-optimization/README.md)
 
 ### ML Production Training-Serving Skew Playbook
 A public, vendor-neutral catalog to detect training–serving skew and **configuration drift** that silently degrade model accuracy, latency, and production reliability. 
