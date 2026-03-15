@@ -21,11 +21,11 @@ while managing resources such as KV cache and GPU memory.
 
 # High-Level Architecture
 
-A typical LLM inference system contains the following components:
+<p align="center">
+  <img src="high-level-architecture.png" width="250">
+</p>
 
-![LLM inference architecture diagram](high-level-architecture.png)
-
-*Figure: High-level architecture of an LLM inference system.*
+<p align="center"><em>Figure: High-level architecture of an LLM inference system.</em></p>
 
 ---
 
@@ -116,9 +116,11 @@ The prefill engine processes the prompt tokens.
 
 Typical workflow:
 
-![Prefill Engine Workflow](prefill.png)
+<p align="center">
+  <img src="prefill.png" width="250">
+</p>
 
-*Figure: Prefill phase processes prompt tokens and populates the KV cache.*
+<p align="center"><em>Figure: Prefill phase processes prompt tokens and populates the KV cache.</em></p>
 
 Important optimizations in this stage:
 
@@ -164,9 +166,11 @@ The decode engine generates tokens for active sequences.
 
 Each iteration performs:
 
-![Decode Engine Workflow](decode.png)
+<p align="center">
+  <img src="decode.png" width="250">
+</p>
 
-*Figure: Decode phase generates tokens sequentially using the KV cache.*
+<p align="center"><em>Figure: Decode phase generates tokens sequentially using the KV cache</em></p>
 
 Optimizations in this stage include:
 
