@@ -118,7 +118,6 @@ A **Day-0 → Day-2, cross-functional readiness framework** for deploying LLMs u
 
 📂 [`llm-inference-production-readiness-checklist/`](./llm-inference-production-readiness-checklist/README.md)
 
-
 ### vLLM Runtime Metrics & Observability Guide
 A public, vendor-neutral catalog of **static and dynamic runtime signals** required to analyze GPU efficiency, batching behavior, latency, autoscaling correctness, and runtime drift in vLLM-based inference systems.  
 
@@ -155,6 +154,16 @@ A glossary of terms used when managing a cluster of GPUs.
 ParallelIQ GPUaaS control plane high level view   
 
 📂 [`gpuaas-control-plane/`](./gpuaas-fleet/gpuaas-control-plane/README.md)
+
+### Performance Analysis Vocabulary
+Performance analysis Vocabulary  
+
+📂 [`performance-analysis-vocabulary/`](./performance-analysis-vocabulary/README.md)
+
+### LLM Model Deployment Glossary
+LLM Model Deployment Glossary  
+
+📂 [`llm-model-deployment-glossary/`](./llm-model-deployment-glossary/README.md)
 
 ---
 
