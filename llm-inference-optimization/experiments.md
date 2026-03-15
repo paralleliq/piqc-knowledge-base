@@ -131,11 +131,82 @@ Continuous batching should increase GPU utilization and improve tokens/sec under
 
 ---
 
-# Future Experiments
+# Experiment 4 — Quantization
 
-We will add these additional experiments later:
+## Goal
 
-- **Experiment 4 — Quantization**
-- **Experiment 5 — Speculative Decoding**
+Measure the impact of **model quantization** on inference latency, throughput, and memory usage.
+
+Quantization reduces model precision (for example from FP16 to INT8 or INT4) to improve performance and reduce GPU memory consumption.
+
+## Workload
+
+Use prompts with moderate length:
+
+
+500–1500 tokens
+
+
+Use the same prompt set for both baseline and quantized runs.
+
+## Procedure
+
+1. Run inference using the baseline model (e.g., FP16).
+2. Record performance metrics.
+3. Load a quantized version of the same model (e.g., INT8 or INT4).
+4. Run the same prompts.
+5. Compare performance and resource usage.
+
+## Metrics
+
+- TTFT
+- tokens/sec
+- GPU memory usage
+- GPU utilization
+
+## Expected Result
+
+Quantized models typically:
+
+- reduce GPU memory usage
+- increase throughput
+- slightly impact model accuracy depending on quantization level.
+
+---
+
+# Experiment 5 — Speculative Decoding
+
+## Goal
+
+Measure improvements in **token generation throughput** using speculative decoding.
+
+Speculative decoding uses a **smaller draft model** to predict multiple tokens ahead while the larger model verifies them.
+
+## Workload
+
+Use prompts of moderate size:
+
+500–1500 tokens
+
+Generate responses of ~100 tokens to observe decode behavior.
+
+## Procedure
+
+1. Run inference using the baseline model without speculative decoding.
+2. Record decode throughput.
+3. Enable speculative decoding with a smaller draft model.
+4. Run the same prompts.
+5. Compare token generation performance.
+
+## Metrics
+
+- tokens/sec
+- inter-token latency
+- acceptance rate of draft tokens
+- GPU utilization
+
+## Expected Result
+
+Speculative decoding can significantly improve **decode throughput**, especially for large models, by allowing multiple tokens to be generated per verification step.
 
 These complete the core set of optimization techniques commonly used in modern LLM 
