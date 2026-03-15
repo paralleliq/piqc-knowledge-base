@@ -22,15 +22,11 @@ This guide applies to systems that serve large language models, including:
 
 # Why This Matters
 
-In modern AI systems, **LLM inference is often the main bottleneck** in both latency and cost.
+In modern AI systems, **LLM inference is often the main bottleneck** in both latency and cost.  Inference typically consists of two phases:
 
-Inference typically consists of two phases:
+Prefill phase  → processing the prompt and building the KV cache
 
-Prefill phase  
-→ processing the prompt and building the KV cache
-
-Decode phase  
-→ generating tokens sequentially using the KV cache
+Decode phase  → generating tokens sequentially using the KV cache
 
 Each phase has different performance characteristics and optimization strategies.
 
@@ -94,13 +90,9 @@ Practical experiments for benchmarking optimization techniques like:
 
 # Example Pipeline
 
-A common real-time AI pipeline is:
+A common real-time AI pipeline is: STT → LLM → TTS
 
-STT → LLM → TTS
-
-In these systems the LLM often dominates latency, making inference optimization critical.
-
-However, the techniques in this repository apply broadly to **any production LLM serving system**.
+In these systems the LLM often dominates latency, making inference optimization critical.  However, the techniques in this repository apply broadly to **any production LLM serving system**.
 
 ---
 
