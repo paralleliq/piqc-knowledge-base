@@ -46,14 +46,10 @@ The playbook covers optimizations across five layers of the stack:
 
 # Repository Structure
 
-llm-inference-optimization/
-
-README.md
-CHECKLIST.md
-architecture.md
-metrics.md
-experiments.md
-
+- [CHECKLIST.md](CHECKLIST.md) — Step-by-step optimization checklist
+- [architecture.md](architecture.md) — LLM inference architecture overview
+- [metrics.md](metrics.md) — Key metrics for evaluating inference performance
+- [experiments.md](experiments.md) — Benchmark experiments for common optimizations
 
 ### README.md
 Overview of LLM inference optimization strategies.
