@@ -23,42 +23,9 @@ while managing resources such as KV cache and GPU memory.
 
 A typical LLM inference system contains the following components:
 
+![LLM inference architecture diagram](high-level-archiecture.png)
 
-Client Request
-│
-▼
-+------------------+
-| Request Router |
-+------------------+
-│
-▼
-+------------------+
-| Scheduler |
-+------------------+
-│
-▼
-+------------------+
-| Prefill Engine |
-+------------------+
-│
-▼
-+------------------+
-| KV Cache Manager|
-+------------------+
-│
-▼
-+------------------+
-| Decode Engine |
-+------------------+
-│
-▼
-+------------------+
-| Token Streaming |
-+------------------+
-│
-▼
-Client Response
-
+*Figure: High-level architecture of an LLM inference system.*
 
 ---
 
@@ -149,21 +116,9 @@ The prefill engine processes the prompt tokens.
 
 Typical workflow:
 
+![Prefill Engine Workflow](prefill.png)
 
-prompt tokens
-│
-▼
-embedding lookup
-│
-▼
-transformer layers
-│
-▼
-attention computation
-│
-▼
-KV cache population
-
+*Figure: Prefill phase processes prompt tokens and populates the KV cache.*
 
 Important optimizations in this stage:
 
@@ -209,21 +164,9 @@ The decode engine generates tokens for active sequences.
 
 Each iteration performs:
 
+![Decode Engine Workflow](decode.png)
 
-read KV cache
-│
-▼
-compute attention
-│
-▼
-run transformer layers
-│
-▼
-generate logits
-│
-▼
-sample next token
-
+*Figure: Decode phase generates tokens sequentially using the KV cache.*
 
 Optimizations in this stage include:
 
