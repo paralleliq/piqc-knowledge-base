@@ -23,7 +23,7 @@ while managing resources such as KV cache and GPU memory.
 
 A typical LLM inference system contains the following components:
 
-![LLM inference architecture diagram](high-level-archiecture.png)
+![LLM inference architecture diagram](high-level-architecture.png)
 
 *Figure: High-level architecture of an LLM inference system.*
 
