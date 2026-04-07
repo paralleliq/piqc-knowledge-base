@@ -1,0 +1,31 @@
+FROM vllm/vllm-openai:latest
+
+# Accept HuggingFace token as build argument
+ARG HF_TOKEN
+ENV HF_TOKEN=${HF_TOKEN}
+ENV HF_HOME=/model-cache
+
+# Pre-download the model at build time
+RUN --mount=type=secret,id=hf_token \
+    pip install huggingface_hub && \
+    python3 -c "
+from huggingface_hub import snapshot_download
+snapshot_download(
+    repo_id='mistralai/Mistral-7B-Instruct-v0.2',
+    token='${HF_TOKEN}',
+    cache_dir='/model-cache'
+)
+"
+
+# Expose vLLM port
+EXPOSE 8000
+
+# Start vLLM server
+CMD ["python3", "-m", "vllm.entrypoints.openai.api_server", \
+     "--model", "mistralai/Mistral-7B-Instruct-v0.2", \
+     "--host", "0.0.0.0", \
+     "--port", "8000", \
+     "--tensor-parallel-size", "1", \
+     "--dtype", "float16", \
+     "--max-model-len", "4096"]
+
