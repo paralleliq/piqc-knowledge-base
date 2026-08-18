@@ -133,6 +133,11 @@ A public, vendor-neutral catalog to detect, diagnose, and mitigate KV cache pres
 
 📂 [`kv-cache-pressure-playbook/`](./kv-cache-pressure-playbook/README.md)
 
+### LMCache & Cross-Engine KV Cache Reuse Playbook
+A public, vendor-neutral guide to cross-engine and cross-tier KV cache reuse (LMCache and similar systems) — when it helps, when it's dead weight, and how to tell the difference from **hit rate and fetch latency alone**.
+
+📂 [`lmcache-kv-cache-reuse-playbook/`](./lmcache-kv-cache-reuse-playbook/README.md)
+
 ### LLM Inference Optimization Playbook
 A public, vendor-neutral playbook to **detect, measure, and optimize LLM inference performance**, covering **prefill latency, decode throughput, KV cache behavior, and GPU utilization** in modern serving systems.
 

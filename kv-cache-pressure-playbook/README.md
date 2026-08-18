@@ -118,6 +118,9 @@ the model is allowed to do under load.
 
 ## 🔗 Related Checklists & Guides
 
+-  **LMCache & Cross-Engine KV Cache Reuse Playbook** — a different failure mode: not "the cache is crashing pods," but "you're recomputing a cache you already have elsewhere"
+  [`lmcache-kv-cache-reuse-playbook/`](../lmcache-kv-cache-reuse-playbook/)
+
 -  **GenAI Model Deployment Checklist**  
   [`/CHECKLIST.md`](../CHECKLIST.md)
 
