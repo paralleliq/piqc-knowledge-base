@@ -77,3 +77,7 @@ It is simple but slower and less predictable for large GPU workloads.
 - [Cold Start](./cold-start.md)
 - [Gang Scheduling](./gang-scheduling.md)
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

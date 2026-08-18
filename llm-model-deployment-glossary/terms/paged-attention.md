@@ -38,3 +38,7 @@ Execution layer / Memory management
 
 In vLLM, paged attention allows thousands of concurrent sequences by mapping KV cache blocks dynamically, dramatically reducing fragmentation and increasing effective GPU memory utilization.
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

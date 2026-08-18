@@ -124,3 +124,7 @@
 | Model download slow | 14GB model weights | Normal — wait 5-10 min |
 | nvidia-smi not found | Not in vLLM container PATH | Use `/metrics` endpoint instead |
 | ECR 403 Forbidden | Docker not authenticated | Re-run ECR login command |
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

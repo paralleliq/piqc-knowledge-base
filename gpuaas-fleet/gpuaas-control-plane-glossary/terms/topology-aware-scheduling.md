@@ -129,3 +129,7 @@ Keeping communicating workloads near each other reduces latency and improves per
 - [Fragmentation](./fragmentation.md)
 - [Gang Scheduling](./gang-scheduling.md)
 - [Idle Rank](./idle-rank.md)
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

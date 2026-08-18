@@ -76,3 +76,7 @@ Together these provide a complete picture.
 5. control plane uses signals for automation
 
 Obser
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

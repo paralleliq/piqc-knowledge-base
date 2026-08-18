@@ -97,3 +97,7 @@ In this case:
 - utilization and memory are per MIG device
 - KV cache pressure can occur much earlier
 - batch sizes that work on full GPUs may collapse
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

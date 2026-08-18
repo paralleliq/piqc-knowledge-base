@@ -76,3 +76,7 @@ Gang provisioning treats capacity as an atomic unit: either all resources exist 
 - [NodeClaim](./nodeclaim.md)
 - [Proactive Scaling](./proactive-scaling.md)
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

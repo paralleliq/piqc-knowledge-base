@@ -137,3 +137,7 @@ Scale up is the “add more seats” action — increasing supply so workloads d
 - [Queue Depth](./queue-depth.md)
 - [Scale Down](./scale-down.md)
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

@@ -58,3 +58,7 @@ Without a warm pool, the job would wait for new nodes to be created.
 Warm pools improve latency but:
 - increase short-term cost due to idle no
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

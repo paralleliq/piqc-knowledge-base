@@ -121,3 +121,7 @@ A webhook is a “doorbell” — the system rings you immediately when somethin
 - [Closed Loop Control](./closed-loop-control.md)
 - [Reconciliation Loop](./reconciliation-loop.md)
 - [Admission Control](./admission-control.md)
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

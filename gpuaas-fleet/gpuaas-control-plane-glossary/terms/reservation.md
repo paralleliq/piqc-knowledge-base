@@ -120,3 +120,7 @@ A reservation is a “seat with your name on it” — no one else can take it w
 - [Fairness](./fairness.md)
 - [Tenant Onboarding](./tenant-onboarding.md)
 - [Provisioning](./provisioning.md)
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

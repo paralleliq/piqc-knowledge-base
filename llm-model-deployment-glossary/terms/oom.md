@@ -38,3 +38,7 @@ Execution layer / Hardware layer / Runtime
 
 In LLM serving, OOM often occurs when KV cache grows faster than expected, leading to sudden pod restarts even when GPU compute utilization appears low.
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

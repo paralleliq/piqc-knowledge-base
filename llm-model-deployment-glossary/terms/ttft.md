@@ -38,3 +38,7 @@ Serving layer / Execution layer / End-to-end latency
 
 In chat systems, high TTFT is often caused by long prompts, batch formation delays, or cold starts, making the system feel unresponsive even when throughput is high.
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

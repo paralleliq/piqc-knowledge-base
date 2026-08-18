@@ -38,3 +38,7 @@ Control plane / Serving layer / Execution layer
 
 For 70B-class models, cold start time is often dominated by loading tens of gigabytes of weights, making reactive autoscaling ineffective without pre-warmed capacity.
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

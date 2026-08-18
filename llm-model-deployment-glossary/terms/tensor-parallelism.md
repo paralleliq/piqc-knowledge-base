@@ -39,3 +39,7 @@ Execution layer / Distributed execution
 In inference for 70B+ models, tensor parallelism is commonly used to shard attention and feedforward layers across 2–8 GPUs, trading increased communication for the ability to fit and execute the model.
 
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

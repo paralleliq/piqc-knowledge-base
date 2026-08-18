@@ -126,3 +126,7 @@ While autoscalers react to real-time demand, capacity planning shapes the struct
 ## Mental model
 
 Capacity planning is the “fleet sizing strategy” — deciding how big the ship should be before it sails, not just adjusting sails mid-journey.
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

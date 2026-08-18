@@ -38,3 +38,7 @@ Execution layer / Distributed execution
 
 In large-model deployments, pipeline parallelism is often combined with tensor parallelism to fit 70B+ models across multiple GPUs, at the cost of higher latency and more complex scheduling.
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

@@ -90,3 +90,7 @@ Platform upgrades are “surgery while the system is running” — changes must
 - [SLA](./sla.md)
 - [Reconciliation Loop](./reconciliation-loop.md)
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

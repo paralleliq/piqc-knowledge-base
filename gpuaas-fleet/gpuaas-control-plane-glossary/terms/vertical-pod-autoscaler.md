@@ -121,3 +121,7 @@ VPA is the “right-size tool” that ensures each pod asks for only what it tru
 - [Bin Packing](./bin-packing.md)
 - [Cost Optimization](./cost-optimization.md)
 - [Provisioning](./provisioning.md)
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

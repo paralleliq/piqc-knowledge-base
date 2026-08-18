@@ -131,3 +131,7 @@
 | `/v1/models` hangs | vLLM still initializing | Wait for "Application startup complete" |
 | `curl` not in container | Some base images lack curl | Use `python3 -c "import urllib..."` instead |
 | Model download slow | 14GB weights from HuggingFace | Normal — wait 5-10 minutes |
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

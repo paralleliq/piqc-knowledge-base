@@ -115,3 +115,7 @@ Gateway API is the “traffic controller” that directs requests to the right G
 - [Execution Layer](./execution-layer.md)
 - [Observability](./observability.md)
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

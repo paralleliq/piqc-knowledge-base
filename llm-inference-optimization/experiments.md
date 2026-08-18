@@ -210,3 +210,7 @@ Generate responses of ~100 tokens to observe decode behavior.
 Speculative decoding can significantly improve **decode throughput**, especially for large models, by allowing multiple tokens to be generated per verification step.
 
 These complete the core set of optimization techniques commonly used in modern LLM 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

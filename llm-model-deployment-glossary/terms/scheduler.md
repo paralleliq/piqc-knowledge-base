@@ -37,3 +37,7 @@ Execution layer / Serving layer
 **In practice**
 
 In vLLM, the scheduler continuously admits and batches new requests based on available KV cache blocks and active sequence capacity to maximize throughput without triggering memory exhaustion.
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

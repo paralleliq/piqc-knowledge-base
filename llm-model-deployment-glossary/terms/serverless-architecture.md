@@ -38,3 +38,7 @@ Control plane / Orchestration layer / Serving layer
 
 For LLM serving, pure serverless architectures struggle due to long model load times and large GPU memory requirements, making pre-warmed capacity and hybrid models more effective than true scale-to-zero designs.
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*

@@ -87,3 +87,7 @@ A cold start is the “boot-up tax” paid when the system must create capacity 
 - [Proactive Scaling](./proactive-scaling.md)
 - [Idle Rank](./idle-rank.md)
 
+
+---
+
+*Part of the [PIQC Knowledge Base](https://github.com/paralleliq/piqc-knowledge-base), maintained by [Paralleliq](https://paralleliq.ai). Want to check your own cluster for this? [piqc](https://github.com/paralleliq/piqc) is a free, open-source, read-only GPU waste scanner.*
