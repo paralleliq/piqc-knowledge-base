@@ -1,4 +1,18 @@
 
+## 2026-08-22
+
+### Added
+- New decoding-strategy and cache-reuse terms:
+  - Beam Search
+  - Self-Speculative Decoding (Medusa, EAGLE, lookahead decoding)
+  - LMCache
+  - Token Maxing
+
+### Fixed
+- `llm-d` previously defined as a generic "LLM Daemon" node-runtime concept. Corrected to
+  describe the actual project: a Kubernetes-native framework for disaggregated
+  prefill/decode vLLM serving with KV-cache-aware cluster routing.
+
 ## 2026-01-20
 
 ### Added
