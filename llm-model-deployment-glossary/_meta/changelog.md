@@ -69,6 +69,10 @@
 - This closes essentially every dangling cross-reference in the pre-existing entries, plus
   every term named as a category example in `_meta/taxonomy.md`.
 
+### Added
+- Context Length (Max Model Length) — referenced from `kv-cache.md`, `paged-attention.md`,
+  `gpu-hbm.md`, and `token-maxing.md` but previously had no entry of its own.
+
 ## 2026-01-20
 
 ### Added
