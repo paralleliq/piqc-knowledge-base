@@ -1,4 +1,13 @@
 
+## 2026-08-23
+
+### Added
+- Deployment-topology and model-architecture terms prompted by reading the "Intelligence
+  per Watt" paper (Saad-Falcon et al., 2026, arXiv:2511.07885):
+  - Local Inference (On-Device / Edge Inference)
+  - Hybrid Local-Cloud Routing
+  - Active Parameters vs. Total Parameters
+
 ## 2026-08-22
 
 ### Added
