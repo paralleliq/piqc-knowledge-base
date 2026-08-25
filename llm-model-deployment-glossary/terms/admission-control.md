@@ -29,6 +29,7 @@ Scheduling & Admission
 **Related terms**
 - Scheduler
 - Active sequences
+- Admission caps
 - Queueing delay
 - Head-of-line blocking
 - KV cache

@@ -1,4 +1,14 @@
 
+## 2026-08-24
+
+### Added
+- Admission Caps (`max_num_seqs` / `max_num_batched_tokens`) — the two independent
+  sequence-count and token-budget ceilings underlying vLLM's admission control, prompted
+  by a question about what the platform's admission-throttling rules actually check.
+
+### Changed
+- Admission Control: added Admission Caps to Related terms.
+
 ## 2026-08-23
 
 ### Added
