@@ -17,6 +17,9 @@ Control plane / Orchestration layer
 - Can scale replicas, pods, or entire GPU nodes  
 - Operates with delay (scale-up time is non-zero)  
 - Strongly coupled to batching, memory usage, and admission control  
+- Two distinct scaling layers in inference serving, easy to conflate: *replica-level* (adding/removing whole GPU instances — the only layer that changes GPU spend) and *request-level* (packing more concurrent sequences onto an already-running replica, e.g. continuous batching) — a replica sitting at 90% GPU utilization from good request-level packing needs no autoscaling action at all  
+- **Reactive vs. predictive:** reactive autoscaling waits for a demand signal to cross a threshold before acting; predictive autoscaling forecasts demand ahead of time and pre-scales to avoid the cold-start window entirely. Most production autoscalers today are reactive — predictive scaling needs a reliable historical-demand model, which most teams don't have running  
+- **KEDA** (Kubernetes Event-Driven Autoscaling) is the most common real-world implementation for GPU workloads — extends Kubernetes' native HPA to scale on custom/external metrics (queue depth, request rate, Prometheus queries) instead of just CPU/memory, which plain HPA can't do  
 
 **Common pitfalls**
 - Scaling on GPU utilization alone leads to wrong decisions  
@@ -24,11 +27,14 @@ Control plane / Orchestration layer
 - Memory-bound models scale poorly even when compute is idle  
 - Thrashing when scale-up and scale-down oscillate  
 - Autoscaler unaware of KV cache, context length, or precision  
+- Conflating request-level and replica-level scaling — tuning continuous-batching/admission settings when the actual bottleneck is too few replicas, or vice versa  
 
 **Related terms**
 - Horizontal Pod Autoscaler (HPA)  
+- KEDA  
 - Vertical scaling  
 - Admission control  
+- Continuous batching  
 - Warm pools  
 - Predictive scaling  
 - Cold start  
