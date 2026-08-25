@@ -26,7 +26,7 @@ Control plane / Orchestration layer
 - Scale-up latency causes cold-start outages under bursty traffic  
 - Memory-bound models scale poorly even when compute is idle  
 - Thrashing when scale-up and scale-down oscillate  
-- Autoscaler unaware of KV cache, context length, or precision  
+- Autoscaler typically triggers on queue depth or request rate, not KV cache, context length, or precision — not because it structurally can't (KEDA will scale on any Prometheus query, including model-exported metrics like `gpu_cache_usage_perc`), but because someone has to manually decide that's the right signal and wire it in per deployment; most setups don't  
 - Conflating request-level and replica-level scaling — tuning continuous-batching/admission settings when the actual bottleneck is too few replicas, or vice versa  
 
 **Related terms**
